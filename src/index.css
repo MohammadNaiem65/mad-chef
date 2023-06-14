@@ -3,3 +3,17 @@
 @tailwind utilities;
 
 
+/* Group Utilities */
+@layer components {
+    .btn {
+        @apply text-lg px-4 py-2 transform duration-150 rounded hover:-translate-y-1 hover:shadow-2xl
+    }
+
+    .btn-primary{
+        @apply bg-Primary hover:shadow-Primary
+    }
+
+    .btn-secondary{
+        @apply bg-Secondary hover:shadow-Secondary
+    }
+}
