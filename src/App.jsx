@@ -1,14 +1,11 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
+import viteLogo from "./assets/logo.png";
 import "./App.css";
 
 function App() {
-	const [count, setCount] = useState(0);
 
 	return (
 		<>
-			
+			<img src={viteLogo} alt='' className='w-48' />
 		</>
 	);
 }
