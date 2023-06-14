@@ -16,4 +16,12 @@
     .btn-secondary{
         @apply bg-Secondary hover:shadow-Secondary
     }
+
+    .container{
+        @apply w-4/5 mx-auto px-10
+    }
+
+    .link-hover{
+        @apply hover:text-Primary duration-300
+    }
 }

@@ -1,9 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import App from "./App";
-import BaseLayout from "./layout/BaseLayout/BaseLayout.jsx";
+import { RouterProvider } from "react-router-dom";
 import { routes } from "./routers/routes.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
