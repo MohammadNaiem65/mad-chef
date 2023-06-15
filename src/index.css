@@ -18,7 +18,7 @@
     }
 
     .container{
-        @apply w-4/5 mx-auto px-10
+        @apply w-4/5 mx-auto px-0
     }
 
     .link-hover{
