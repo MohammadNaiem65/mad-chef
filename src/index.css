@@ -18,10 +18,22 @@
     }
 
     .container{
-        @apply w-4/5 mx-auto px-0
+        @apply w-4/5 mx-auto
     }
 
     .link-hover{
         @apply hover:text-Primary duration-300
+    }
+
+    .shape-bg-one{
+        @apply rounded-tl-[32%_30%] rounded-tr-[68%_24%] rounded-br-[70%_76%] rounded-bl-[30%_70%]
+    }
+
+    .shape-bg-two{
+        @apply rounded-tl-[27%_79%] rounded-tr-[73%_49%] rounded-br-[38%_51%] rounded-bl-[32%_21%]
+    }
+
+    .gradient-bg {
+        @apply bg-gradient-to-r from-Secondary from-0% to-[#c6d8fc] to-100%
     }
 }

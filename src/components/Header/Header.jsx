@@ -4,10 +4,11 @@ import { useState } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
 
 const Header = () => {
+	// State status to show navigation bar.
 	const [navOptionsStatus, setNavOptionsStatus] = useState(false);
-	console.log(navOptionsStatus);
+
 	return (
-		<div className='md:container px-0'>
+		<div className='md:container'>
 			<div className='flex justify-between items-center px-12 relative'>
 				<img src={logo} alt='Mad Chef logo' className='w-32 md:w-48' />
 				<p className='text-xl block md:hidden absolute right-14 duration-300 cursor-pointer'>
@@ -20,7 +21,7 @@ const Header = () => {
 				<div
 					className={`${
 						navOptionsStatus ? "top-24 bg-Secondary p-3 rounded" : "-top-28"
-					} font-semibold text-lg md:bg-transparent absolute right-14 md:static flex flex-col md:flex-row gap-x-6  transform md:translate-y-0 duration-300 ease-out`}>
+					} font-semibold font-Vollokorn text-lg md:bg-transparent absolute right-14 md:static flex flex-col md:flex-row gap-x-6  transform md:translate-y-0 duration-300 ease-out`}>
 					<Link className='link-hover'>Home</Link>
 					<Link className='link-hover'>Favorite</Link>
 					<Link className='link-hover'>Blog</Link>
