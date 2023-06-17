@@ -6,7 +6,7 @@
 /* Group Utilities */
 @layer components {
     .btn {
-        @apply text-lg px-4 py-2 transform duration-150 rounded hover:-translate-y-1 hover:shadow-2xl
+        @apply text-white text-lg px-4 py-2 transform duration-150 rounded hover:-translate-y-1 hover:shadow-2xl
     }
 
     .btn-primary{
