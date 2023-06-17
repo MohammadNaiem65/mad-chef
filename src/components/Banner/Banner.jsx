@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 const Banner = () => {
 	return (
-		<div className='container h-96 flex justify-between mt-10 border-2 border-Secondary rounded gradient-bg overflow-hidden relative'>
+		<div className='container h-96 flex justify-center md:justify-between mt-10 border-2 border-Secondary rounded gradient-bg overflow-hidden relative'>
 			{/* Left Side blobs */}
 			<div className='h-64 aspect-square shape-bg-one bg-Primary bg-opacity-20 absolute top-24 -left-32 rotate-45'></div>
 			<div className='h-64 aspect-square shape-bg-one bg-Primary bg-opacity-20 absolute top-28 -left-32 rotate-45'></div>
@@ -15,8 +15,8 @@ const Banner = () => {
 			{/* Left Container */}
 			<div className=' w-1/2 relative flex justify-center items-center'>
 				{/* Center blobs */}
-				<div className='h-64 aspect-square shape-bg-one bg-Primary bg-opacity-20 absolute top-24 left-1/2 rotate-45'></div>
-				<div className='h-64 aspect-square shape-bg-one bg-Primary bg-opacity-20 absolute top-24 left-1/2 rotate-[35deg]'></div>
+				<div className='h-64 hidden md:block aspect-square shape-bg-one bg-Primary bg-opacity-20 absolute top-24 left-1/2 rotate-45'></div>
+				<div className='h-64 hidden md:block aspect-square shape-bg-one bg-Primary bg-opacity-20 absolute top-24 left-1/2 rotate-[35deg]'></div>
 				<div>
 					<h2 className='text-2xl font-semibold font-Vollokornn italic relative z-50 '>
 						Welcome to <br />
@@ -30,7 +30,7 @@ const Banner = () => {
 				</div>
 			</div>
 			{/* Right Container */}
-			<div className='w-1/2 flex justify-center items-center relative'>
+			<div className='w-1/2 hidden md:flex justify-center items-center relative'>
 				{/* Right side blobs */}
 				<div className='h-32 aspect-square shape-bg-two bg-Primary bg-opacity-10 absolute left-32 -bottom-10 rotate-45'></div>
 				<div className='h-20 aspect-square shape-bg-two bg-Primary bg-opacity-20 absolute -right-10 -top-3 rotate-45'></div>
@@ -44,7 +44,7 @@ const Banner = () => {
 					<path fill='#8FB4FF'>
 						<animate
 							attributeName='d'
-							dur='20s'
+							dur='50s'
 							repeatCount='indefinite'
 							values='M306.601 305.947C329.757 281.813 352.543 232.099 351.99 190.186C351.437 148.273 330 86.1245 303.284 54.4708C276.567 22.8171 227.286 -2.90063 191.691 0.263955C156.095 3.42854 119.629 54.2644 89.7123 73.4583C59.7953 92.6523 25.7728 88.9893 12.1888 115.428C-1.39529 141.866 -4.88629 193.757 8.20803 232.088C21.3023 270.419 56.6142 328.261 90.7547 345.411C124.895 362.561 177.077 341.568 213.051 334.99C249.025 328.413 283.444 330.081 306.601 305.947Z;
 							
