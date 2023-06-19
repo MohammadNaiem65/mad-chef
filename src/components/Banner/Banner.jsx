@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 const Banner = () => {
 	return (
-		<div className='container h-96 flex justify-center md:justify-between mt-10 border-2 border-Secondary rounded gradient-bg overflow-hidden relative'>
+		<div className='container h-96 gradient-bg flex justify-center md:justify-between rounded shadow-lg overflow-hidden relative'>
 			{/* Left Side blobs */}
 			<div className='h-64 aspect-square shape-bg-one bg-Primary bg-opacity-20 absolute top-24 -left-32 rotate-45'></div>
 			<div className='h-64 aspect-square shape-bg-one bg-Primary bg-opacity-20 absolute top-28 -left-32 rotate-45'></div>

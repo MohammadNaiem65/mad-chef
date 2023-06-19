@@ -9,7 +9,7 @@ export default {
 			},
 			colors: {
 				Primary: "#8fb4ff",
-				Secondary: "#ebf1ff",
+				Secondary: "#d8e4fe",
 				Accent: "#f89c6c",
 				Bg: "#f2f2f2",
 				"Clr-base": "#808080",
@@ -20,6 +20,9 @@ export default {
 				"float-knife": "float-knife 4s linear 1s infinite alternate",
 				"float-pan": "float-knife 4s linear .5s infinite alternate",
 				"float-spoon": "float-spoon 4s linear .65s infinite alternate",
+				"arrow-hover-one": "arrow-hover 2s",
+				"arrow-hover-two": "arrow-hover 2s .2s",
+				"arrow-hover-three": "arrow-hover 2s .4s",
 			},
 			keyframes: {
 				blob: {

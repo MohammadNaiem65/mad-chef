@@ -5,35 +5,36 @@
 
 /* Group Utilities */
 @layer components {
-    .btn {
-        @apply text-white text-lg px-4 py-2 transform duration-150 rounded hover:-translate-y-1 hover:shadow-2xl
+    .container {
+        @apply w-4/5 mx-auto mt-14
     }
 
-    .btn-primary{
+    .btn {
+        @apply w-28 text-white text-lg text-center px-4 py-2 block rounded transform duration-150 hover:-translate-y-1 hover:shadow-2xl
+    }
+
+    .btn-primary {
         @apply bg-Primary hover:shadow-Primary
     }
 
-    .btn-secondary{
+    .btn-secondary {
         @apply bg-Secondary hover:shadow-Secondary
     }
 
-    .container{
-        @apply w-4/5 mx-auto
-    }
-
-    .link-hover{
+    .link-hover {
         @apply hover:text-Primary duration-300
     }
 
-    .shape-bg-one{
+    .shape-bg-one {
         @apply rounded-tl-[32%_30%] rounded-tr-[68%_24%] rounded-br-[70%_76%] rounded-bl-[30%_70%]
     }
 
-    .shape-bg-two{
+    .shape-bg-two {
         @apply rounded-tl-[27%_79%] rounded-tr-[73%_49%] rounded-br-[38%_51%] rounded-bl-[32%_21%]
     }
 
     .gradient-bg {
-        @apply bg-gradient-to-r from-Secondary from-0% to-[#c6d8fc] to-100%
+        @apply bg-gradient-to-r from-[#ebf1ff] from-0% to-[#c6d8fc] to-100%
     }
 }
+
