@@ -6,15 +6,17 @@ import "./InvertedCard.css";
 
 const InvertedCard = () => {
 	return (
-		<div className='w-1/2 h-[22rem] font-semibold flex flex-col justify-between rounded overflow-hidden'>
-			<img
-				src={model}
-				alt='image of chef'
-				className='h-60 w-full object-cover object-center'
-			/>
-			<div className='h-28 w-full px-2 py-1 bg-white relative leading-[1.3rem]'>
-				<div className='w-[7.25rem] h-12 bg-white grid place-items-center absolute left-0 -top-12 '>
-					<p className='m-2 py-2 px-[0.375rem] bg-Primary text-yellow-300 flex items-center gap-[2px] rounded'>
+		<div className='w-1/2 h-[22.5rem] font-semibold bg-[#495579] flex flex-col justify-between rounded overflow-hidden'>
+			<div className='h-60 w-full div-secret relative secret-after'>
+				<img
+					src={model}
+					alt='image of chef'
+					className='h-full w-full object-cover object-center rounded-br'
+				/>
+			</div>
+			<div className='h-28 w-full px-2 py-2 bg-white relative leading-[1.3rem] rounded-tr'>
+				<div className='w-[7.25rem] h-12 bg-white grid place-items-center border-[#495579] border-t-[10px] border-r-[10px] absolute left-0 -top-12 rounded-tr secret-before before:top-0 before:left-0 before:shadow-span-shadow-left secret-after after:top-0 after:right-0 after:shadow-span-shadow-right'>
+					<p className='px-1 py-[0.375rem] bg-Primary text-yellow-300 flex items-center gap-[2px] rounded p-secret'>
 						<FaStar />
 						<FaStar />
 						<FaStar />

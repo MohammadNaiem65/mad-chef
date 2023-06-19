@@ -14,6 +14,10 @@ export default {
 				Bg: "#f2f2f2",
 				"Clr-base": "#808080",
 			},
+			boxShadow: {
+				"span-shadow-left": "-4px -4px #495579",
+				"span-shadow-right": "4px -4px #495579",
+			},
 			animation: {
 				blob: "blob 35s linear infinite alternate",
 				"float-chef": "float-chef 4s linear infinite alternate",
