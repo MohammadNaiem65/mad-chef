@@ -14,7 +14,7 @@ const InvertedCard = () => {
 					className='h-full w-full object-cover object-center rounded-br'
 				/>
 			</div>
-			<div className='h-28 w-full px-2 py-2 bg-white relative leading-[1.3rem] rounded-tr'>
+			<div className='h-28 w-full px-2 py-2 bg-white text-slate-500 relative leading-[1.3rem] rounded-tr'>
 				<div className='w-[7.25rem] h-12 bg-white grid place-items-center border-[#495579] border-t-[10px] border-r-[10px] absolute left-0 -top-12 rounded-tr secret-before before:top-0 before:left-0 before:shadow-span-shadow-left secret-after after:top-0 after:right-0 after:shadow-span-shadow-right'>
 					<p className='px-1 py-[0.375rem] bg-Primary text-yellow-300 flex items-center gap-[2px] rounded p-secret'>
 						<FaStar />
@@ -25,7 +25,7 @@ const InvertedCard = () => {
 					</p>
 				</div>
 
-				<p className='text-lg'>Mohammad Naiem Bin Omar</p>
+				<p className='text-lg text-black'>Mohammad Naiem Bin Omar</p>
 				<p>Experience: 5 Years</p>
 				<p>Recipes: 50</p>
 				<div className='flex justify-between items-center '>

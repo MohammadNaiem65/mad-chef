@@ -33,6 +33,10 @@
         @apply rounded-tl-[27%_79%] rounded-tr-[73%_49%] rounded-br-[38%_51%] rounded-bl-[32%_21%]
     }
 
+    .shape-bg-three {
+        @apply rounded-tl-[58%_34%] rounded-tr-[42%_62%] rounded-br-[66%_38%] rounded-bl-[34%_66%]   
+    }
+
     .gradient-bg {
         @apply bg-gradient-to-r from-[#ebf1ff] from-0% to-[#c6d8fc] to-100%
     }

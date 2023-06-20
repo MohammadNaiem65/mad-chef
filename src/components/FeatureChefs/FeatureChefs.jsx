@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import InvertedCard from "../InvertedCard/InvertedCard";
+import LargeCard from "../LargeCard/LargeCard";
 
 const FeatureChefs = () => {
 	// Ref definitions
@@ -113,26 +114,41 @@ const FeatureChefs = () => {
 						{/* Lower card */}
 						<div
 							ref={lowerCardsRef}
-							className={`h-56 bg-blue-600 mt-2 grid place-content-center arrow-container duration-500 ${
+							className={`h-56 mt-2 duration-500 ${
 								lowerCardsVisibility
 									? "opacity-100 translate-y-0"
 									: "opacity-0 translate-y-7"
-							}`}></div>
+							}`}>
+							<LargeCard />
+						</div>
 					</div>
 
 					{/* Right side container */}
-					<div className='w-1/2 flex-grow bg-cyan-300 '></div>
-				</div>
+					<div className='md:w-1/2'>
+						{/* Upper Cards */}
+						<div
+							ref={upperCardsRef}
+							className={`h-56 duration-500 ${
+								upperCardsVisibility
+									? "opacity-100 translate-y-0"
+									: "opacity-0 translate-y-7"
+							}`}>
+							<LargeCard />
+						</div>
 
-				{/* <button
-					ref={btnRef}
-					className={`btn btn-primary mt-3 mx-auto duration-500 ${
-						btnVisibility
-							? "opacity-100 translate-y-0"
-							: "opacity-0 translate-y-7"
-					}`}>
-					View All
-				</button> */}
+						{/* Lower card */}
+						<div
+							ref={lowerCardsRef}
+							className={`mt-2 flex gap-2 duration-500 ${
+								lowerCardsVisibility
+									? "opacity-100 translate-y-0"
+									: "opacity-0 translate-y-7"
+							}`}>
+							<InvertedCard />
+							<InvertedCard />
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 	);
