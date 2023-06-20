@@ -12,6 +12,7 @@ const Banner = () => {
 			<div className='h-64 aspect-square shape-bg-one bg-Primary bg-opacity-20 absolute top-28 -left-32 rotate-45'></div>
 			<div className='h-32 aspect-square shape-bg-two bg-Primary bg-opacity-10 absolute left-32 -top-12 rotate-45'></div>
 			<div className='h-32 aspect-square shape-bg-two bg-Primary bg-opacity-10 absolute left-32 -top-10 rotate-45'></div>
+
 			{/* Left Container */}
 			<div className=' w-1/2 relative flex justify-center items-center'>
 				{/* Center blobs */}
@@ -29,10 +30,11 @@ const Banner = () => {
 					<Link className='btn btn-primary inline-block mt-4'>Explore</Link>
 				</div>
 			</div>
+			
 			{/* Right Container */}
 			<div className='w-1/2 hidden md:flex justify-center items-center relative'>
 				{/* Right side blobs */}
-				<div className='h-32 aspect-square shape-bg-two bg-Primary bg-opacity-10 absolute left-32 -bottom-10 rotate-45'></div>
+				<div className='h-32 aspect-square shape-bg-two bg-Primary bg-opacity-60 md:bg-opacity-10 absolute right-0 md:right-80 -bottom-10 rotate-45'></div>
 				<div className='h-20 aspect-square shape-bg-two bg-Primary bg-opacity-20 absolute -right-10 -top-3 rotate-45'></div>
 
 				{/* Chef background blobs */}

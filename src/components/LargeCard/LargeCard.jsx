@@ -1,20 +1,21 @@
 import React from "react";
-import "./LargeCard.css";
-import person from '../../assets/model.jpeg'
+import person from "../../assets/model.jpeg";
 import { FaHeart, FaRegStar, FaStar, FaStarHalfAlt } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 const LargeCard = () => {
 	return (
-		<div className='bg-white h-full rounded flex justify-evenly items-center relative overflow-hidden'>
-			<div className='h-36 aspect-square shape-bg-one bg-Primary bg-opacity-20 absolute -right-12 -bottom-6'></div>
-			<div className='image-container w-48 h-48 shape-bg-three bg-red-50 overflow-hidden shadow-lg shadow-Primary z-30'>
+		<div className='bg-white h-full rounded p-5 md:p-0 flex flex-col md:flex-row md:justify-evenly items-center relative overflow-hidden'>
+			{/* Left side container */}
+			<div className='image-container w-48 h-48 mb-5 md:mb-0 shape-bg-three overflow-hidden shadow-lg shadow-Primary z-30'>
 				<img
 					src={person}
 					alt=''
-					className='object-cover object-center h-full w-full chef-image'
+					className='h-full w-full chef-image object-cover object-center'
 				/>
 			</div>
+
+			{/* Right side container */}
 			<div className='w-1/2 text-slate-500'>
 				<div className='mb-3'>
 					<p className='text-lg font-semibold text-black'>
@@ -28,7 +29,7 @@ const LargeCard = () => {
 						<FaRegStar />
 					</p>
 				</div>
-				<div className="font-semibold">
+				<div className='font-semibold'>
 					<p>Experience: 5 Years</p>
 					<p>Recipes: 50</p>
 					<div className='flex justify-between items-center '>
@@ -44,6 +45,9 @@ const LargeCard = () => {
 					</div>
 				</div>
 			</div>
+
+			{/* Right-Bottom blob */}
+			<div className='h-36 aspect-square shape-bg-one bg-Primary bg-opacity-20 absolute -right-12 -bottom-6'></div>
 		</div>
 	);
 };

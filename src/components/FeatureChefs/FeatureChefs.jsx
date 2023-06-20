@@ -8,72 +8,62 @@ const FeatureChefs = () => {
 	const titleRef = useRef(null);
 	const upperCardsRef = useRef(null);
 	const lowerCardsRef = useRef(null);
-	// const btnRef = useRef(null);
 
 	// States definitions
 	const [sectionVisibility, setSectionVisibility] = useState(false);
 	const [titleVisibility, setTitleVisibility] = useState(false);
 	const [upperCardsVisibility, setUpperCardsVisibility] = useState(false);
 	const [lowerCardsVisibility, setLowerCardsVisibility] = useState(false);
-	// const [btnVisibility, setBtnVisibility] = useState(false);
 
 	// Handling observer
 	useEffect(() => {
-		// Options definitions
-		const featuredOptions = {
-			threshold: 0,
-			rootMargin: "0px 0px -150px 0px",
-		};
+		if (window.innerWidth >= 1024) {
+			// Observer definitions
+			const featuredSectionObserver = new IntersectionObserver(
+				(entries) => {
+					entries.forEach((entry) => {
+						// Checking for section
+						if (entry.target === sectionRef.current) {
+							if (entry.isIntersecting) {
+								setSectionVisibility(true);
+							} else setSectionVisibility(false);
+						} else if (entry.target === titleRef.current) {
+							if (entry.isIntersecting) {
+								setTitleVisibility(true);
+							} else setTitleVisibility(false);
+						} else if (entry.target === upperCardsRef.current) {
+							if (entry.isIntersecting) {
+								setUpperCardsVisibility(true);
+							} else setUpperCardsVisibility(false);
+						} else if (entry.target === lowerCardsRef.current) {
+							if (entry.isIntersecting) {
+								setLowerCardsVisibility(true);
+							} else setLowerCardsVisibility(false);
+						}
+					});
+				},
+				{ rootMargin: "0px 0px -150px 0px" }
+			);
 
-		// const btnOptions = {
-		// 	threshold: 0,
-		// 	rootMargin: "0px",
-		// };
+			// Setting observer
+			featuredSectionObserver.observe(sectionRef.current);
+			featuredSectionObserver.observe(titleRef.current);
+			featuredSectionObserver.observe(upperCardsRef.current);
+			featuredSectionObserver.observe(lowerCardsRef.current);
+		} else {
+			setSectionVisibility(true);
+			setTitleVisibility(true);
+			setUpperCardsVisibility(true);
+			setLowerCardsVisibility(true);
+		}
 
-		// Observer definitions
-		const featuredSectionObserver = new IntersectionObserver((entries) => {
-			entries.forEach((entry) => {
-				// Checking for section
-				if (entry.target === sectionRef.current) {
-					if (entry.isIntersecting) {
-						setSectionVisibility(true);
-					} else setSectionVisibility(false);
-				} else if (entry.target === titleRef.current) {
-					if (entry.isIntersecting) {
-						setTitleVisibility(true);
-					} else setTitleVisibility(false);
-				} else if (entry.target === upperCardsRef.current) {
-					if (entry.isIntersecting) {
-						setUpperCardsVisibility(true);
-					} else setUpperCardsVisibility(false);
-				} else if (entry.target === lowerCardsRef.current) {
-					if (entry.isIntersecting) {
-						setLowerCardsVisibility(true);
-					} else setLowerCardsVisibility(false);
-				}
-			});
-		}, featuredOptions);
-
-		// const btnObserver = new IntersectionObserver((entries) => {
-		// 	entries.forEach((entry) => {
-		// 		if (entry.isIntersecting) {
-		// 			setBtnVisibility(true);
-		// 		} else setBtnVisibility(false);
-		// 	});
-		// }, btnOptions);
-
-		// Setting observer
-		featuredSectionObserver.observe(sectionRef.current);
-		featuredSectionObserver.observe(titleRef.current);
-		featuredSectionObserver.observe(upperCardsRef.current);
-		featuredSectionObserver.observe(lowerCardsRef.current);
-		// btnObserver.observe(btnRef.current);
+		return () => {};
 	}, []);
 
 	return (
 		<div
 			ref={sectionRef}
-			className={`h-[100vh] mt-14 bg-[#495579] pt-10 duration-500 ${
+			className={`min-h-[100vh] mt-14 bg-[#495579] pt-10 pb-10 md:pb-0 duration-500 ${
 				sectionVisibility
 					? "opacity-100 translate-y-0"
 					: "opacity-0 translate-y-7"
@@ -98,23 +88,33 @@ const FeatureChefs = () => {
 				{/* Chef cards container */}
 				<div className='mt-5 md:flex gap-3'>
 					{/* Left side container */}
-					<div className='md:w-1/2'>
+					<div className='md:w-1/2 mb-5 md:mb-0'>
 						{/* Upper Cards */}
-						<div
-							ref={upperCardsRef}
-							className={`flex gap-2 duration-500 ${
-								upperCardsVisibility
-									? "opacity-100 translate-y-0"
-									: "opacity-0 translate-y-7"
-							}`}>
-							<InvertedCard />
-							<InvertedCard />
+						<div className='md:flex gap-2'>
+							<div
+								ref={upperCardsRef}
+								className={`w-full md:w-1/2 h-[22.5rem] mb-5 md:mb-0 duration-500 ${
+									upperCardsVisibility
+										? "opacity-100 translate-y-0"
+										: "opacity-0 translate-y-7"
+								}`}>
+								<InvertedCard />
+							</div>
+							<div
+								ref={upperCardsRef}
+								className={`w-full md:w-1/2 h-[22.5rem] duration-500 ${
+									upperCardsVisibility
+										? "opacity-100 translate-y-0"
+										: "opacity-0 translate-y-7"
+								}`}>
+								<InvertedCard />
+							</div>
 						</div>
 
 						{/* Lower card */}
 						<div
 							ref={lowerCardsRef}
-							className={`h-56 mt-2 duration-500 ${
+							className={`md:h-56 mt-5 md:mt-2 duration-500 ${
 								lowerCardsVisibility
 									? "opacity-100 translate-y-0"
 									: "opacity-0 translate-y-7"
@@ -128,7 +128,7 @@ const FeatureChefs = () => {
 						{/* Upper Cards */}
 						<div
 							ref={upperCardsRef}
-							className={`h-56 duration-500 ${
+							className={`md:h-56 duration-500 ${
 								upperCardsVisibility
 									? "opacity-100 translate-y-0"
 									: "opacity-0 translate-y-7"
@@ -137,15 +137,25 @@ const FeatureChefs = () => {
 						</div>
 
 						{/* Lower card */}
-						<div
-							ref={lowerCardsRef}
-							className={`mt-2 flex gap-2 duration-500 ${
-								lowerCardsVisibility
-									? "opacity-100 translate-y-0"
-									: "opacity-0 translate-y-7"
-							}`}>
-							<InvertedCard />
-							<InvertedCard />
+						<div className='mt-5 md:mt-2 md:flex gap-2'>
+							<div
+								ref={lowerCardsRef}
+								className={`md:w-1/2 h-[22.5rem] duration-500 ${
+									lowerCardsVisibility
+										? "opacity-100 translate-y-0"
+										: "opacity-0 translate-y-7"
+								}`}>
+								<InvertedCard />
+							</div>
+							<div
+								ref={lowerCardsRef}
+								className={`md:w-1/2 h-[22.5rem] mt-5 md:mt-0 duration-500 ${
+									lowerCardsVisibility
+										? "opacity-100 translate-y-0"
+										: "opacity-0 translate-y-7"
+								}`}>
+								<InvertedCard />
+							</div>
 						</div>
 					</div>
 				</div>
