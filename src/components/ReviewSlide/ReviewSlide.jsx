@@ -23,13 +23,13 @@ const ReviewSlide = ({ num }) => {
 				backgroundSize: "cover",
 			}}>
 			<div className='w-full h-full flex justify-center items-end text-white bg-gradient-to-t from-black to-transparent to-80%'>
-				<div className='w-3/5 text-center text-sm mb-5'>
+				<div className='w-3/5 text-center text-xs md:text-sm mb-5'>
 					<h3>
 						"Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut minus
 						amet quam officia at, eaque ratione expedita ducimus!"
 					</h3>
-					<p className='text-lg mt-1'> - Mohammad Naiem</p>
-					<p className='w-fit text-yellow-300 text-lg flex items-center gap-[2px] mx-auto mt-1'>
+					<p className='text-sm md:text-lg mt-1'> - Mohammad Naiem</p>
+					<p className='w-fit text-yellow-300 md:text-lg flex items-center gap-[2px] mx-auto mt-1'>
 						<FaStar />
 						<FaStar />
 						<FaStar />

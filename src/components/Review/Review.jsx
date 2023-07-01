@@ -23,12 +23,18 @@ const Review = () => {
 				spaceBetween: 2,
 				loop: true,
 				speed: 250,
-				autoplay: {
-					delay: 3000,
-				},
+				// autoplay: {
+				// 	delay: 3000,
+				// },
 				pagination: {
 					el: ".swiper-pagination",
 					dynamicBullets: true,
+				},
+				breakpoints: {
+					// when window width is >= 376px
+					376: {
+						slidesPerView: 2,
+					},
 				},
 
 				modules: [Navigation, Pagination, Autoplay],
@@ -73,10 +79,10 @@ const Review = () => {
 				{/* Slider Control */}
 				<>
 					<div onClick={() => swiper && swiper.slidePrev()}>
-						<FaArrowLeft className='w-14 h-14 p-3 md:text-2xl text-Primary bg-Primary/20 hover:bg-Primary/50  absolute top-1/2 left-5 transform -translate-y-1/2 rounded-full cursor-pointer z-10' />
+						<FaArrowLeft className='w-7 h-7 md:w-14 md:h-14 p-1 md:p-3 md:text-2xl text-Primary bg-Primary/20 hover:bg-Primary/50  absolute top-1/2 left-5 transform -translate-y-1/2 rounded-full cursor-pointer z-10' />
 					</div>
 					<div onClick={() => swiper && swiper.slideNext()}>
-						<FaArrowRight className='w-14 h-14 p-3 text-2xl text-Primary bg-Primary/20 hover:bg-Primary/50  absolute top-1/2 right-5 transform -translate-y-1/2 rounded-full cursor-pointer z-10' />
+						<FaArrowRight className='w-7 h-7 md:w-14  md:h-14 p-1 md:p-3 text-2xl text-Primary bg-Primary/20 hover:bg-Primary/50  absolute top-1/2 right-5 transform -translate-y-1/2 rounded-full cursor-pointer z-10' />
 					</div>
 				</>
 			</div>
