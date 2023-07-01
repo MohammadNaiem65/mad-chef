@@ -23,9 +23,9 @@ const Review = () => {
 				spaceBetween: 2,
 				loop: true,
 				speed: 250,
-				// autoplay: {
-				// 	delay: 3000,
-				// },
+				autoplay: {
+					delay: 3000,
+				},
 				pagination: {
 					el: ".swiper-pagination",
 					dynamicBullets: true,

@@ -10,7 +10,7 @@
     }
 
     .btn {
-        @apply w-28 text-white text-lg text-center px-4 py-2 block rounded transform duration-150 hover:-translate-y-1 hover:shadow-2xl
+        @apply w-28 text-white text-lg text-center px-4 py-2 block rounded transform duration-150 outline-Primary hover:-translate-y-1 hover:shadow-2xl
     }
 
     .btn-primary {

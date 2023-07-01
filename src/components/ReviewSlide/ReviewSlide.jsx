@@ -1,6 +1,5 @@
 import React from "react";
 import model from "../../assets/model.jpeg";
-import "./ReviewSlide.css";
 import { FaRegStar, FaStar } from "react-icons/fa6";
 import { FaStarHalfAlt } from "react-icons/fa";
 
