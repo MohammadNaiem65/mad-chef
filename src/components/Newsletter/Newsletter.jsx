@@ -33,7 +33,7 @@ const Newsletter = () => {
 			<form>
 				{" "}
 				{/* form starts */}
-				<div className='text-lg mt-6 flex gap-5'>
+				<div className='text-lg mt-6 md:flex gap-5'>
 					{/* form control */}
 					<div className='w-72 relative'>
 						<label
@@ -50,7 +50,7 @@ const Newsletter = () => {
 							type='email'
 							name='email'
 							id='email'
-							className='w-full h-full text-gray-500 px-3 py-1 border-2 border-Primary/50 outline-Primary rounded'
+							className='w-full h-11 text-gray-500 px-3 py-1 border-2 border-Primary/50 outline-Primary rounded'
 							ref={emailField}
 							onFocus={() => setGotFocused(true)}
 							onBlur={() => {
@@ -59,9 +59,9 @@ const Newsletter = () => {
 								}
 							}}
 							required
-						/>
+						/> 
 					</div>
-					<button className='btn btn-primary' type='submit'>
+					<button className='btn btn-primary mx-auto mt-3 md:mt-0' type='submit'>
 						Sign Up
 					</button>
 				</div>
