@@ -56,7 +56,7 @@ const Review = () => {
 			</h2>
 			{/* Swiper container */}
 			<div
-				className='w-4/5 h-96 mx-auto mt-5 relative overflow-hidden swiper'
+				className='w-full md:w-4/5 h-96 mx-auto mt-5 relative overflow-hidden swiper'
 				ref={swiperRef}>
 				<div className='swiper-wrapper'>
 					<div className='swiper-slide'>

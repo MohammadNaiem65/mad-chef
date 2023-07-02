@@ -23,7 +23,7 @@ const ReviewSlide = ({ num }) => {
 			}}>
 			<div className='w-full h-full flex justify-center items-end text-white bg-gradient-to-t from-black to-transparent to-80%'>
 				<div className='w-3/5 text-center text-xs md:text-sm mb-5'>
-					<h3>
+					<h3 className="font-Popins">
 						"Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut minus
 						amet quam officia at, eaque ratione expedita ducimus!"
 					</h3>
