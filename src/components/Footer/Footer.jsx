@@ -19,7 +19,7 @@ const Footer = () => {
 				<div
 					className="mt-3 font-Vollokorn text-lg flex flex-col">
 					<Link className='w-fit link-hover'>Home</Link>
-					<Link className='w-fit link-hover'>Favorite</Link>
+					<Link className='w-fit link-hover'>Dashboard</Link>
 					<Link className='w-fit link-hover'>Blog</Link>
 					<p>
 						<Link className='w-fit link-hover'>Login </Link>/{""}

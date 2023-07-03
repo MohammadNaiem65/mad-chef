@@ -31,8 +31,8 @@ const Review = () => {
 					dynamicBullets: true,
 				},
 				breakpoints: {
-					// when window width is >= 376px
-					376: {
+					// when window width is >= 426px
+					426: {
 						slidesPerView: 2,
 					},
 				},

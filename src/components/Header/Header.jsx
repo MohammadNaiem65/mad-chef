@@ -22,8 +22,8 @@ const Header = () => {
 					className={`${
 						navOptionsStatus ? "top-24 bg-Secondary p-3 rounded" : "-top-28"
 					} font-semibold font-Vollokorn text-lg md:bg-transparent absolute right-14 md:static flex flex-col md:flex-row gap-x-6  transform md:translate-y-0 duration-300 ease-out`}>
-					<Link className='link-hover'>Home</Link>
-					<Link className='link-hover'>Favorite</Link>
+					<Link to="/" className='link-hover'>Home</Link>
+					<Link to="/dashboard" className='link-hover'>Dashboard</Link>
 					<Link className='link-hover'>Blog</Link>
 					<p>
 						<Link className='link-hover'>Login</Link>/{""}
