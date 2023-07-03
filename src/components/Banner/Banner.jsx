@@ -27,7 +27,7 @@ const Banner = () => {
 						<br />
 						Indulge your senses...
 					</h2>
-					<Link className='btn btn-primary inline-block mt-4'>Explore</Link>
+					<Link to="/dashboard" className='btn btn-primary inline-block mt-4'>Explore</Link>
 				</div>
 			</div>
 			

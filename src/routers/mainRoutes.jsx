@@ -20,7 +20,11 @@ export const mainRoutes = createBrowserRouter([
 				children: [
 					{
 						path: "/dashboard",
-						element: <p className='p-3 font-semibold'>Nothing to see here.</p>,
+						element: (
+							<p className='p-3 font-semibold text-gray-500'>
+								Click on a option to see details.
+							</p>
+						),
 					},
 					{
 						path: "/dashboard/chefs/chef/:id",
