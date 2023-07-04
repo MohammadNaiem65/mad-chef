@@ -35,6 +35,8 @@ const RecipeDetails = () => {
 		setIsAddedToFav(true);
 	};
 
+	console.log(typeof rating);
+
 	return (
 		<div className=''>
 			{/* Title-Navigation */}
@@ -73,11 +75,20 @@ const RecipeDetails = () => {
 							}`}></div>
 						{/* Rating */}
 						<div className='mt-3 text-xl text-yellow-500 flex items-center gap-1'>
-							<FaStar />
+							{Array.from({ length: 5 }, (_, i) => {
+								if (rating > i + 1) {
+									return <FaStar key={i} />;
+								} else if (rating >= i + 0.5) {
+									return <FaStarHalfAlt key={i} />;
+								} else {
+									return <FaRegStar key={i} />;
+								}
+							})}
+							{/* <FaStar />
 							<FaStar />
 							<FaStar />
 							<FaStarHalfAlt />
-							<FaRegStar />
+							<FaRegStar /> */}
 							<p className='ml-2 text-gray-400 font-semibold'>
 								{rating} out of 5
 							</p>
