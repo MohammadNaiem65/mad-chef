@@ -1,11 +1,12 @@
-import { useLoaderData } from "react-router-dom";
+import { Outlet, useLoaderData } from "react-router-dom";
 import { FaBriefcase } from "react-icons/fa6";
 import { FcLike } from "react-icons/fc";
 import { MdFastfood } from "react-icons/md";
+import Recipe from "../Recipe/Recipe";
 
 const Chef = () => {
 	const chef = useLoaderData();
-	const { picture, name, bio, likes, yearsOfExperience, availableRecipes } =
+	const { picture, name, bio, likes, yearsOfExperience, availableRecipes, id } =
 		chef;
 	return (
 		<div>
@@ -26,24 +27,28 @@ const Chef = () => {
 							<span className='mr-1'>
 								<FcLike />
 							</span>
-							: {likes}
+							{likes}
 						</p>
 						<p className='flex items-center'>
 							<span className='mr-1'>
 								<FaBriefcase />
 							</span>
-							: {yearsOfExperience} years
+							{yearsOfExperience} years
 						</p>
 						<p className='flex items-center'>
 							<span className='mr-1'>
 								<MdFastfood />
 							</span>
-							: {availableRecipes.length} recipes
+							{availableRecipes.length} recipes
 						</p>
 					</div>
 				</div>
 			</div>
 			{/* Chef banner end */}
+			{/* Available Recipes section starts here  */}
+			<section className='my-5'>
+				<Outlet />
+			</section>
 		</div>
 	);
 };

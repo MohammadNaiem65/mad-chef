@@ -77,12 +77,12 @@ const FeatureChefs = () => {
 							? "opacity-100 translate-y-0"
 							: "opacity-0 translate-y-7"
 					}`}>
-					Country's
+					America's
 					<span className='font-semibold ml-3 relative cursor-pointer z-40 hover:text-white after:duration-200 after:contents-[""] after:h-[6px] after:w-[112%] after:bg-Accent after:absolute after:bottom-[2px] after:-left-[6px] after:-z-10 hover:after:h-[88%] '>
 						Best Chefs
 					</span>
 					<br />
-					on Mad Chef
+					are on Mad Chef
 				</h2>
 
 				{/* Chef cards container */}
