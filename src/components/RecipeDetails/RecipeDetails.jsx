@@ -1,4 +1,7 @@
 import React, { useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { Link } from "react-router-dom";
 import { FaStarHalfAlt } from "react-icons/fa";
 import {
 	FaChevronLeft,
@@ -8,13 +11,29 @@ import {
 	FaHeartCirclePlus,
 	FaHeartCircleCheck,
 } from "react-icons/fa6";
-import { Link } from "react-router-dom";
 
 const RecipeDetails = () => {
 	const recipe = JSON.parse(sessionStorage.getItem("recipe"));
 	const prevLocation = sessionStorage.getItem("prev-location");
 	const { picture, name, rating, ingredients, method } = recipe;
 	const [hovered, setHovered] = useState(false);
+	const [isAddedToFav, setIsAddedToFav] = useState(false);
+
+	const addToFav = (e) => {
+		// toast
+		toast.success("Added to Favorite list.", {
+			position: "top-center",
+			autoClose: 5000,
+			hideProgressBar: false,
+			closeOnClick: true,
+			pauseOnHover: true,
+			draggable: true,
+			progress: undefined,
+			theme: "colored",
+		});
+
+		setIsAddedToFav(true);
+	};
 
 	return (
 		<div className=''>
@@ -64,23 +83,35 @@ const RecipeDetails = () => {
 							</p>
 						</div>
 						{/* Favorite Button */}
-						<p className='btn btn-primary w-fit flex mt-2'>
-							<span className='text-2xl'>
-								<FaHeartCirclePlus />
+						<p
+							onClick={isAddedToFav ? null : addToFav}
+							className={`btn w-fit flex mt-2 ${
+								isAddedToFav
+									? "bg-Primary/70 hover:translate-y-0 hover:shadow-none"
+									: " btn-primary"
+							}`}>
+							<span className={`text-2xl ${isAddedToFav && "text-red-500"}`}>
+								{isAddedToFav ? <FaHeartCircleCheck /> : <FaHeartCirclePlus />}
 							</span>
-							<span className='ml-2 text-lg'>Add to Favorites</span>
+							<span className='ml-2 text-lg'>
+								{isAddedToFav ? "Added to Favorites" : "Add to Favorites"}
+							</span>
 						</p>
 					</div>
 				</div>
 				<div>
-					<p className="text-xl font-semibold font-Vollokorn">Ingredients:</p>
-					<p className="font-Popins">{ingredients.join(", ")}</p>
+					<p className='text-xl font-semibold font-Vollokorn'>Ingredients:</p>
+					<p className='font-Popins'>{ingredients.join(", ")}</p>
 				</div>
 				<div>
-					<p className="text-xl font-semibold font-Vollokorn">Cooking Method:</p>
-					<p className="font-Popins">{method}</p>
+					<p className='text-xl font-semibold font-Vollokorn'>
+						Cooking Method:
+					</p>
+					<p className='font-Popins'>{method}</p>
 				</div>
 			</div>
+			{/* Toast container */}
+			<ToastContainer />
 		</div>
 	);
 };
