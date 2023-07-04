@@ -43,7 +43,7 @@ export const mainRoutes = createBrowserRouter([
 									),
 							},
 							{
-								path: "/dashboard/chefs/chef/recipe-details",
+								path: "/dashboard/chefs/chef/:id/recipe-details",
 								element: <RecipeDetails />,
 							},
 						],
