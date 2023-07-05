@@ -12,21 +12,20 @@ const Newsletter = () => {
 
 	return (
 		<div
-			className='h-[28rem] w-full mt-16 flex flex-col justify-center items-center text-center text-gray-500'
+			className='h-[28rem] w-full mt-16 font-Popins flex flex-col justify-center items-center text-center text-gray-500'
 			style={{
 				backgroundImage: `url("${bgImage}")`,
 				backgroundRepeat: "no-repeat",
 				backgroundPosition: "center",
-				// backgroundSize: "cover",
 			}}>
-			<h1 className='text-2xl uppercase'>
+			<h1 className='text-2xl font-Vollokorn uppercase'>
 				{/*title */}
 				Hey you, Sign Up and <br />
 				<span className='font-semibold text-[1.7rem] mx-2 relative cursor-pointer z-40 hover:text-white after:duration-200 after:contents-[""] after:h-[6px] after:w-[112%] after:bg-Accent after:absolute after:bottom-[2px] after:-left-[9px] after:-z-10 hover:after:h-[88%] '>
 					CONNECT
 				</span>
 				to{" "}
-				<span className='text-[1.7rem] text-black font-semibold normal-case'>
+				<span className='text-[1.7rem] text-black font-semibold font-Popins normal-case'>
 					Mad Chef
 				</span>
 			</h1>

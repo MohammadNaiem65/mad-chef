@@ -4,8 +4,9 @@ import { Link } from "react-router-dom";
 const Footer = () => {
 	return (
 		<div className='md:h-64 mt-16 px-[5%] bg-[#495579] text-stone-300 md:flex'>
-
-			<div className=''> {/* Left Side Container */}
+			<div className=''>
+				{" "}
+				{/* Left Side Container */}
 				<img className='w-48' src={logo} alt='logo of mad chef' />
 				<p className='md:w-2/5 ml-3 text-sm font-Popins'>
 					Mad Chef is the perfect way to find and order food from countries best
@@ -16,11 +17,16 @@ const Footer = () => {
 			{/* Right side Containers */}
 			<div className='mt-10 mr-16'>
 				<h4 className='font-semibold font-Popins text-lg'>Useful links</h4>
-				<div
-					className="mt-3 font-Vollokorn text-lg flex flex-col">
-					<Link className='w-fit link-hover'>Home</Link>
-					<Link className='w-fit link-hover'>Dashboard</Link>
-					<Link className='w-fit link-hover'>Blog</Link>
+				<div className='mt-3 font-Vollokorn text-lg flex flex-col'>
+					<Link to='/' className='w-fit link-hover'>
+						Home
+					</Link>
+					<Link to='/dashboard' className='w-fit link-hover'>
+						Dashboard
+					</Link>
+					<Link to='/' className='w-fit link-hover'>
+						Blog
+					</Link>
 					<p>
 						<Link className='w-fit link-hover'>Login </Link>/{""}
 						<Link className='w-fit link-hover'>Sign In</Link>
@@ -30,9 +36,15 @@ const Footer = () => {
 			<div className='mt-10'>
 				<h4 className='font-semibold font-Popins text-lg'>Quick links</h4>
 				<div className='mt-3  font-Vollokorn text-lg flex flex-col'>
-					<Link className='w-fit link-hover'>Our Blog</Link>
-					<Link className='w-fit link-hover'>Top Rated Chef</Link>
-					<Link className='w-fit link-hover'>Most Liked Recipes</Link>
+					<Link to='/' className='w-fit link-hover'>
+						Our Blog
+					</Link>
+					<Link to='/' className='w-fit link-hover'>
+						Top Rated Chef
+					</Link>
+					<Link to='/' className='w-fit link-hover'>
+						Most Liked Recipes
+					</Link>
 				</div>
 			</div>
 		</div>
