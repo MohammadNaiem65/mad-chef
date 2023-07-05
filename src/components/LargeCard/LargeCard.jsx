@@ -36,7 +36,7 @@ const LargeCard = ({ chef }) => {
 					<div className='flex justify-between items-center '>
 						<p>Recipes: {recipes?.length}</p>
 						<Link
-							to={`http://localhost:5173/dashboard/chefs/chef/${id}`}
+							to={`https://assignment-10-phr.netlify.app/dashboard/chefs/chef/${id}`}
 							className='arrows flex justify-center items-center w-12 h-6 relative z-50'>
 							<span className='w-3 h-3 border-t-[3px] border-r-[3px] border-Primary rounded-tr-[2px] block transform rotate-45 hover'></span>
 							<span className='w-3 h-3 border-t-[3px] border-r-[3px] border-Primary rounded-tr-[2px] block transform rotate-45'></span>

@@ -16,12 +16,12 @@ export const mainRoutes = createBrowserRouter([
 			{
 				path: "/",
 				element: <Home />,
-				loader: () => fetch("http://localhost:5000/reviews"),
+				loader: () => fetch("https://mad-chef-server.vercel.app/reviews"),
 			},
 			{
 				path: "/dashboard",
 				element: <Dashboard />,
-				loader: () => fetch("http://localhost:5000/chefs/name"),
+				loader: () => fetch("https://mad-chef-server.vercel.app/chefs/name"),
 				children: [
 					{
 						path: "/dashboard",
@@ -35,14 +35,16 @@ export const mainRoutes = createBrowserRouter([
 						path: "/dashboard/chefs/chef/:id",
 						element: <Chef />,
 						loader: ({ params }) =>
-							fetch(`http://localhost:5000/chefs/chef/${params.id}`),
+							fetch(
+								`https://mad-chef-server.vercel.app/chefs/chef/${params.id}`
+							),
 						children: [
 							{
 								path: "/dashboard/chefs/chef/:id",
 								element: <Recipes />,
 								loader: ({ params }) =>
 									fetch(
-										`http://localhost:5000/chefs/chef/recipes/${params.id}`
+										`https://mad-chef-server.vercel.app/chefs/chef/recipes/${params.id}`
 									),
 							},
 							{

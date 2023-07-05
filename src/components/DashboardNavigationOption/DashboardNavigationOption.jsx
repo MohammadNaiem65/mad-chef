@@ -9,8 +9,8 @@ const DashboardNavigationOption = ({ chef }) => {
 			to={`/dashboard/chefs/chef/${chef.id}`}
 			ref={linkRef}
 			className={({ isActive }) =>
-				`p-3 mb-2 bg-Primary/40 font-semibold font-Vollokorn rounded flex justify-between items-center cursor-pointer hover:bg-Primary/70 ${
-					isActive && "bg-Primary/70"
+				`p-3 mb-2 font-semibold font-Vollokorn rounded flex justify-between items-center cursor-pointer hover:bg-Primary/70 ${
+					isActive ? "bg-Primary/90" : "bg-Primary/40"
 				}`
 			}>
 			<p>{chef.name}</p>
