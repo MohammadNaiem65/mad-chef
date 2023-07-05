@@ -1,12 +1,9 @@
-import React from "react";
-import model from "../../assets/model.jpeg";
 import { Link } from "react-router-dom";
 import { FaStar, FaStarHalfAlt, FaRegStar, FaHeart } from "react-icons/fa";
 import "./InvertedCard.css";
 
 const InvertedCard = ({ chef }) => {
 	const { picture, name, yearsOfExperience, recipes, rating, id } = chef;
-	console.log(chef);
 	return (
 		<div className='h-full font-semibold bg-[#495579] flex flex-col justify-between rounded overflow-hidden'>
 			{/* Card upper half */}

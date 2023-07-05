@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import logo from "../../assets/logo.png";
 import { useState } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
+import HeaderActiveLink from "../HeaderActiveLink/HeaderActiveLink";
 
 const Header = () => {
 	// State status to show navigation bar.
@@ -22,15 +23,11 @@ const Header = () => {
 				</p>
 				<div
 					className={`${
-						navOptionsStatus ? "top-24 bg-Secondary p-3 rounded" : "-top-28"
+						navOptionsStatus ? "top-24 p-3 rounded" : "-top-28"
 					} font-semibold font-Vollokorn text-lg md:bg-transparent absolute right-14 md:static flex flex-col md:flex-row gap-x-6  transform md:translate-y-0 duration-300 ease-out`}>
-					<Link to='/' className='link-hover'>
-						Home
-					</Link>
-					<Link to='/dashboard' className='link-hover'>
-						Dashboard
-					</Link>
-					<Link className='link-hover'>Blog</Link>
+					<HeaderActiveLink to='/'>Home</HeaderActiveLink>
+					<HeaderActiveLink to='/dashboard'>Dashboard</HeaderActiveLink>
+					<Link to='/'>Blog</Link>
 					<p>
 						<Link className='link-hover'>Login</Link>/{""}
 						<Link className='link-hover'>Sign In</Link>

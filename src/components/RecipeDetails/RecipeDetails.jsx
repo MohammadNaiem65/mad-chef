@@ -35,8 +35,6 @@ const RecipeDetails = () => {
 		setIsAddedToFav(true);
 	};
 
-	console.log(typeof rating);
-
 	return (
 		<div className=''>
 			{/* Title-Navigation */}
