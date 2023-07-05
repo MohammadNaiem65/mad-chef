@@ -5,11 +5,13 @@ import Dashboard from "../pages/Dashboard/Dashboard";
 import Chef from "../components/Chef/Chef";
 import Recipes from "../components/Recipes/Recipes";
 import RecipeDetails from "../components/RecipeDetails/RecipeDetails";
+import ErrorPage from "../pages/ErrorPage/ErrorPage";
 
 export const mainRoutes = createBrowserRouter([
 	{
 		path: "/",
 		element: <BaseLayout />,
+		errorElement: <ErrorPage />,
 		children: [
 			{
 				path: "/",
