@@ -8,10 +8,15 @@ import "swiper/css/pagination";
 import "swiper/css/autoplay";
 import "swiper/css/keyboard";
 import "./Review.css";
+import { useLoaderData } from "react-router-dom";
 
 Swiper.use([Navigation, Pagination, Autoplay]);
 
 const Review = () => {
+	// reviews
+	const reviewsData = useLoaderData();
+
+	// Swiper states
 	const swiperRef = useRef(null);
 	const [swiper, setSwiper] = useState(null);
 
@@ -59,18 +64,11 @@ const Review = () => {
 				className='w-full md:w-4/5 h-96 mx-auto mt-5 relative overflow-hidden swiper'
 				ref={swiperRef}>
 				<div className='swiper-wrapper'>
-					<div className='swiper-slide'>
-						<ReviewSlide num='1' key={1} />
-					</div>
-					<div className='swiper-slide'>
-						<ReviewSlide num='2' key={2} />
-					</div>
-					<div className='swiper-slide'>
-						<ReviewSlide num='3' key={3} />
-					</div>
-					<div className='swiper-slide'>
-						<ReviewSlide num='4' key={4} />
-					</div>
+					{reviewsData?.map((review) => (
+						<div className='swiper-slide' key={review.id}>
+							<ReviewSlide review={review} />
+						</div>
+					))}
 				</div>
 
 				{/* Pagination */}

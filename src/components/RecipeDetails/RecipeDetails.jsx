@@ -84,11 +84,6 @@ const RecipeDetails = () => {
 									return <FaRegStar key={i} />;
 								}
 							})}
-							{/* <FaStar />
-							<FaStar />
-							<FaStar />
-							<FaStarHalfAlt />
-							<FaRegStar /> */}
 							<p className='ml-2 text-gray-400 font-semibold'>
 								{rating} out of 5
 							</p>

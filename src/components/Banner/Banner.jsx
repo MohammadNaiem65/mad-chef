@@ -25,7 +25,7 @@ const Banner = () => {
 							Mad Chef
 						</span>
 						<br />
-						Indulge your senses...
+						Find America's best chefs
 					</h2>
 					<Link to="/dashboard" className='btn btn-primary inline-block mt-4'>Explore</Link>
 				</div>
