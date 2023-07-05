@@ -1,13 +1,20 @@
 import { Outlet, useLoaderData } from "react-router-dom";
-import { FaBriefcase } from "react-icons/fa6";
+import { FaBriefcase, FaStar } from "react-icons/fa6";
 import { FcLike } from "react-icons/fc";
 import { MdFastfood } from "react-icons/md";
 import Recipe from "../Recipe/Recipe";
 
 const Chef = () => {
 	const chef = useLoaderData();
-	const { picture, name, bio, likes, yearsOfExperience, availableRecipes, id } =
-		chef;
+	const {
+		picture,
+		name,
+		bio,
+		rating,
+		yearsOfExperience,
+		availableRecipes,
+		id,
+	} = chef;
 	return (
 		<div>
 			{/* Chef banner start */}
@@ -24,10 +31,10 @@ const Chef = () => {
 					<p>{bio}</p>
 					<div className='mt-1 text-lg flex justify-between'>
 						<p className='flex items-center'>
-							<span className='mr-1'>
-								<FcLike />
+							<span className='mr-1 text-yellow-500'>
+								<FaStar />
 							</span>
-							{likes}
+							{rating}
 						</p>
 						<p className='flex items-center'>
 							<span className='mr-1'>

@@ -10,7 +10,9 @@ const Header = () => {
 	return (
 		<div className='md:container'>
 			<div className='flex justify-between items-center px-12 relative'>
-				<img src={logo} alt='Mad Chef logo' className='w-32 md:w-48' />
+				<Link to='/'>
+					<img src={logo} alt='Mad Chef logo' className='w-32 md:w-48' />
+				</Link>
 				<p className='text-xl block md:hidden absolute right-14 duration-300 cursor-pointer'>
 					{navOptionsStatus ? (
 						<FaTimes onClick={() => setNavOptionsStatus(!navOptionsStatus)} />
@@ -22,8 +24,12 @@ const Header = () => {
 					className={`${
 						navOptionsStatus ? "top-24 bg-Secondary p-3 rounded" : "-top-28"
 					} font-semibold font-Vollokorn text-lg md:bg-transparent absolute right-14 md:static flex flex-col md:flex-row gap-x-6  transform md:translate-y-0 duration-300 ease-out`}>
-					<Link to="/" className='link-hover'>Home</Link>
-					<Link to="/dashboard" className='link-hover'>Dashboard</Link>
+					<Link to='/' className='link-hover'>
+						Home
+					</Link>
+					<Link to='/dashboard' className='link-hover'>
+						Dashboard
+					</Link>
 					<Link className='link-hover'>Blog</Link>
 					<p>
 						<Link className='link-hover'>Login</Link>/{""}
