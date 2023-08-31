@@ -1,5 +1,5 @@
-import React from "react";
-import DashboardNavigationOption from "../DashboardNavigationOption/DashboardNavigationOption";
+import React from 'react';
+import DashboardNavigationOption from '../DashboardNavigationOption/DashboardNavigationOption';
 
 const DashboardNavigationBar = ({ chefs }) => {
 	return (

@@ -1,5 +1,5 @@
 import { useRef, useState } from "react";
-import bgImage from "../../assets/bg-image.png";
+import bgImage from "../../../assets/bg-image.png";
 import {
 	FaFacebook,
 	FaInstagram,

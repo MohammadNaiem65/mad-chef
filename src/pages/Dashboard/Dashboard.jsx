@@ -1,5 +1,5 @@
-import DashboardNavigationBar from "../../components/DashboardNavigationBar/DashboardNavigationBar";
-import { Outlet, useLoaderData } from "react-router-dom";
+import DashboardNavigationBar from './DashboardNavigationBar/DashboardNavigationBar';
+import { Outlet, useLoaderData } from 'react-router-dom';
 
 const Dashboard = () => {
 	const chefs = useLoaderData();

@@ -1,6 +1,6 @@
-import Header from "../../components/Header/Header";
 import { Outlet, useNavigation } from "react-router-dom";
-import Footer from "../../components/Footer/Footer";
+import Header from "../../pages/shared/Header/Header";
+import Footer from "../../pages/shared/Footer/Footer";
 
 // This is the main layout and all the pages goes into the Base layout.
 const BaseLayout = () => {

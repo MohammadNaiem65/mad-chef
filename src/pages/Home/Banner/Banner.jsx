@@ -1,7 +1,7 @@
-import chef from "../../assets/person.png";
-import pan from "../../assets/pan.png";
-import spoon from "../../assets/spoon.png";
-import knife from "../../assets/knife.png";
+import chef from "../../../assets/person.png";
+import pan from "../../../assets/pan.png";
+import spoon from "../../../assets/spoon.png";
+import knife from "../../../assets/knife.png";
 import { Link } from "react-router-dom";
 
 const Banner = () => {

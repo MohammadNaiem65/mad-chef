@@ -1,7 +1,7 @@
-import Banner from "../../components/Banner/Banner";
-import FeatureChefs from "../../components/FeatureChefs/FeatureChefs";
-import Newsletter from "../../components/Newsletter/Newsletter";
-import Review from "../../components/Review/Review";
+import Banner from "./Banner/Banner";
+import Newsletter from "./Newsletter/Newsletter";
+import FeatureChefs from "./FeatureChefs/FeatureChefs";
+import Review from "./Review/Review";
 
 const Home = () => {
 	return (

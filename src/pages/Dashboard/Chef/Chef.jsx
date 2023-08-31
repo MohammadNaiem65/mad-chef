@@ -1,8 +1,8 @@
-import { Outlet, useLoaderData } from "react-router-dom";
-import { FaBriefcase, FaStar } from "react-icons/fa6";
-import { FcLike } from "react-icons/fc";
-import { MdFastfood } from "react-icons/md";
-import Recipe from "../Recipe/Recipe";
+import { Outlet, useLoaderData } from 'react-router-dom';
+import { FaBriefcase, FaStar } from 'react-icons/fa6';
+import { FcLike } from 'react-icons/fc';
+import { MdFastfood } from 'react-icons/md';
+import Recipe from '../Recipe/Recipe';
 
 const Chef = () => {
 	const chef = useLoaderData();
