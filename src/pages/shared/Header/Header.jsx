@@ -76,7 +76,7 @@ const Header = () => {
 
 				{/* Large device navbar */}
 				<div
-					className={`hidden font-semibold font-Vollokorn text-lg md:flex flex-row gap-x-6`}>
+					className={`hidden font-semibold font-Vollokorn text-lg md:flex gap-x-6`}>
 					<HeaderActiveLink to='/'>Home</HeaderActiveLink>
 					<HeaderActiveLink to='/dashboard'>
 						Dashboard

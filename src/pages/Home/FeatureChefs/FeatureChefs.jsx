@@ -1,12 +1,12 @@
-import React, { useEffect, useRef, useState } from "react";
-import InvertedCard from "../InvertedCard/InvertedCard";
-import LargeCard from "../LargeCard/LargeCard";
+import React, { useEffect, useRef, useState } from 'react';
+import InvertedCard from '../InvertedCard/InvertedCard';
+import LargeCard from '../LargeCard/LargeCard';
 
 const FeatureChefs = () => {
 	const [chefs, setChefs] = useState([]);
 
 	useEffect(() => {
-		fetch("http://localhost:5000/top-chefs")
+		fetch('https://mad-chef-server.vercel.app/top-chefs')
 			.then((res) => res.json())
 			.then((result) => setChefs(result));
 	}, []);
@@ -50,7 +50,7 @@ const FeatureChefs = () => {
 						}
 					});
 				},
-				{ rootMargin: "0px 0px -150px 0px" }
+				{ rootMargin: '0px 0px -150px 0px' }
 			);
 
 			// Setting observer
@@ -73,8 +73,8 @@ const FeatureChefs = () => {
 			ref={sectionRef}
 			className={`min-h-[100vh] mt-14 bg-[#495579] pt-10 pb-10 md:pb-0 duration-500 ${
 				sectionVisibility
-					? "opacity-100 translate-y-0"
-					: "opacity-0 translate-y-7"
+					? 'opacity-100 translate-y-0'
+					: 'opacity-0 translate-y-7'
 			}`}>
 			<div className='w-4/5 mx-auto'>
 				{/* Section title */}
@@ -82,8 +82,8 @@ const FeatureChefs = () => {
 					ref={titleRef}
 					className={`text-2xl text-center text-white font-semibold font-Vollokornn italic relative transform duration-500 z-50 ${
 						titleVisibility
-							? "opacity-100 translate-y-0"
-							: "opacity-0 translate-y-7"
+							? 'opacity-100 translate-y-0'
+							: 'opacity-0 translate-y-7'
 					}`}>
 					America's
 					<span className='font-semibold ml-3 relative cursor-pointer z-40 hover:text-white after:duration-200 after:contents-[""] after:h-[6px] after:w-[112%] after:bg-Accent after:absolute after:bottom-[2px] after:-left-[6px] after:-z-10 hover:after:h-[88%] '>
@@ -104,8 +104,8 @@ const FeatureChefs = () => {
 									key={chef.id}
 									className={`w-full md:w-1/2 h-[22.5rem] mb-5 md:mb-0 duration-500 ${
 										upperCardsVisibility
-											? "opacity-100 translate-y-0"
-											: "opacity-0 translate-y-7"
+											? 'opacity-100 translate-y-0'
+											: 'opacity-0 translate-y-7'
 									}`}>
 									<InvertedCard chef={chef} />
 								</div>
@@ -117,8 +117,8 @@ const FeatureChefs = () => {
 							ref={lowerCardsRef}
 							className={`md:h-56 mt-5 md:mt-2 duration-500 ${
 								lowerCardsVisibility
-									? "opacity-100 translate-y-0"
-									: "opacity-0 translate-y-7"
+									? 'opacity-100 translate-y-0'
+									: 'opacity-0 translate-y-7'
 							}`}>
 							<LargeCard chef={chefs[2]} />
 						</div>
@@ -131,21 +131,23 @@ const FeatureChefs = () => {
 							ref={upperCardsRef}
 							className={`md:h-56 duration-500 ${
 								upperCardsVisibility
-									? "opacity-100 translate-y-0"
-									: "opacity-0 translate-y-7"
+									? 'opacity-100 translate-y-0'
+									: 'opacity-0 translate-y-7'
 							}`}>
 							<LargeCard chef={chefs[3]} />
 						</div>
 
 						{/* Lower cards */}
-						<div ref={lowerCardsRef} className='mt-5 md:mt-2 md:flex gap-2'>
+						<div
+							ref={lowerCardsRef}
+							className='mt-5 md:mt-2 md:flex gap-2'>
 							{chefs.slice(-2).map((chef) => (
 								<div
 									key={chef.id}
 									className={`md:w-1/2 h-[22.5rem] duration-500 ${
 										lowerCardsVisibility
-											? "opacity-100 translate-y-0"
-											: "opacity-0 translate-y-7"
+											? 'opacity-100 translate-y-0'
+											: 'opacity-0 translate-y-7'
 									}`}>
 									<InvertedCard chef={chef} />
 								</div>
