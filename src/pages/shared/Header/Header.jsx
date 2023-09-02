@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { motion, AnimatePresence } from 'framer-motion';
 import logo from '../../../assets/logo.png';
 import { useState } from 'react';
 import { FaBars, FaTimes } from 'react-icons/fa';
@@ -8,6 +9,45 @@ const Header = () => {
 	// State status to show navigation bar.
 	const [navOptionsStatus, setNavOptionsStatus] = useState(false);
 
+	const containerVariant = {
+		initial: {
+			scaleY: 0,
+			transition: {
+				delayChildren: 0.5,
+			},
+		},
+		final: {
+			scaleY: 1,
+			transition: {
+				duration: 0.4,
+				ease: [0.12, 0, 0.39, 0],
+			},
+		},
+		exit: {
+			scaleY: 0,
+			transition: {
+				duration: 0.5,
+				ease: [0.22, 1, 0.36, 1],
+				delay: 0.3,
+			},
+		},
+	};
+
+	const linkContainerVariant = {
+		initial: {
+			transition: {
+				staggerChildren: 0.09,
+				staggerDirection: -1,
+			},
+		},
+		final: {
+			transition: {
+				staggerChildren: 0.09,
+				staggerDirection: 1,
+			},
+		},
+	};
+
 	return (
 		<>
 			<div className='flex justify-between items-center px-12 relative'>
@@ -15,10 +55,10 @@ const Header = () => {
 					<img
 						src={logo}
 						alt='Mad Chef logo'
-						className='w-32 md:w-48'
+						className='w-32 md:w-48 relative z-[100]'
 					/>
 				</Link>
-				<p className='text-xl block md:hidden absolute right-14 duration-300 cursor-pointer'>
+				<p className='text-xl block md:hidden absolute right-14 duration-300 cursor-pointer z-[100]'>
 					{navOptionsStatus ? (
 						<FaTimes
 							onClick={() =>
@@ -33,10 +73,10 @@ const Header = () => {
 						/>
 					)}
 				</p>
+
+				{/* Large device navbar */}
 				<div
-					className={`${
-						navOptionsStatus ? 'top-24 p-3 rounded' : '-top-28'
-					} font-semibold font-Vollokorn text-lg md:bg-transparent absolute right-14 md:static flex flex-col md:flex-row gap-x-6  transform md:translate-y-0 duration-300 ease-out`}>
+					className={`hidden font-semibold font-Vollokorn text-lg md:flex flex-row gap-x-6`}>
 					<HeaderActiveLink to='/'>Home</HeaderActiveLink>
 					<HeaderActiveLink to='/dashboard'>
 						Dashboard
@@ -46,7 +86,7 @@ const Header = () => {
 					</HeaderActiveLink>
 					<HeaderActiveLink to='/consult'>Consult</HeaderActiveLink>
 					<HeaderActiveLink to='/blog'>Blog</HeaderActiveLink>
-					<p>
+					<p className='flex'>
 						<HeaderActiveLink to='login' className='link-hover'>
 							Login
 						</HeaderActiveLink>
@@ -56,8 +96,61 @@ const Header = () => {
 						</HeaderActiveLink>
 					</p>
 				</div>
+
+				{/* Small device navbar */}
+				<AnimatePresence>
+					{navOptionsStatus && (
+						<motion.div
+							className={`w-screen h-screen bg-Secondary absolute top-0 left-0 font-semibold font-Vollokorn text-4xl md:hidden flex flex-col justify-center items-center origin-top z-[90]`}
+							variants={containerVariant}
+							initial='initial'
+							animate='final'
+							exit='exit'>
+							<motion.div
+								variants={linkContainerVariant}
+								initial='initial'
+								animate='final'
+								exit='initial'>
+								<p className='overflow-hidden mt-16'>
+									<HeaderActiveLink to='/'>
+										Home
+									</HeaderActiveLink>
+								</p>
+								<p className='overflow-hidden mt-3'>
+									<HeaderActiveLink to='/dashboard'>
+										Dashboard
+									</HeaderActiveLink>
+								</p>
+								<p className='overflow-hidden mt-3'>
+									<HeaderActiveLink to='/favorites'>
+										Favorites
+									</HeaderActiveLink>
+								</p>
+								<p className='overflow-hidden mt-3'>
+									<HeaderActiveLink to='/blog'>
+										Blog
+									</HeaderActiveLink>
+								</p>
+								<p className='overflow-hidden mt-3'>
+									<HeaderActiveLink
+										to='login'
+										className='link-hover'>
+										Login
+									</HeaderActiveLink>
+								</p>
+								<p className='overflow-hidden mt-3'>
+									<HeaderActiveLink
+										to='/sign-up'
+										className='link-hover'>
+										Sign In
+									</HeaderActiveLink>
+								</p>
+							</motion.div>
+						</motion.div>
+					)}
+				</AnimatePresence>
 			</div>
-			<div className='h-[2px] bg-gray-300'></div>
+			<div className='h-[2px] bg-gray-300 relative z-[100]'></div>
 		</>
 	);
 };

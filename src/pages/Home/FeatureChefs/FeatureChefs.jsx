@@ -6,7 +6,7 @@ const FeatureChefs = () => {
 	const [chefs, setChefs] = useState([]);
 
 	useEffect(() => {
-		fetch("https://mad-chef-server.vercel.app/top-chefs")
+		fetch("http://localhost:5000/top-chefs")
 			.then((res) => res.json())
 			.then((result) => setChefs(result));
 	}, []);

@@ -1,12 +1,12 @@
-import chef from "../../../assets/person.png";
-import pan from "../../../assets/pan.png";
-import spoon from "../../../assets/spoon.png";
-import knife from "../../../assets/knife.png";
-import { Link } from "react-router-dom";
+import chef from '../../../assets/person.png';
+import pan from '../../../assets/pan.png';
+import spoon from '../../../assets/spoon.png';
+import knife from '../../../assets/knife.png';
+import { Link } from 'react-router-dom';
 
 const Banner = () => {
 	return (
-		<div className='container h-96 gradient-bg flex justify-center md:justify-between rounded shadow-lg overflow-hidden relative'>
+		<div className='container h-96 gradient-bg flex justify-center md:justify-evenly rounded shadow-lg overflow-hidden relative'>
 			{/* Left Side blobs */}
 			<div className='h-64 aspect-square shape-bg-one bg-Primary bg-opacity-20 absolute top-24 -left-32 rotate-45'></div>
 			<div className='h-64 aspect-square shape-bg-one bg-Primary bg-opacity-20 absolute top-28 -left-32 rotate-45'></div>
@@ -18,19 +18,22 @@ const Banner = () => {
 				{/* Center blobs */}
 				<div className='h-64 hidden md:block aspect-square shape-bg-one bg-Primary bg-opacity-20 absolute top-24 left-1/2 rotate-45'></div>
 				<div className='h-64 hidden md:block aspect-square shape-bg-one bg-Primary bg-opacity-20 absolute top-24 left-1/2 rotate-[35deg]'></div>
-				<div>
-					<h2 className='text-2xl font-semibold font-Vollokornn italic relative z-50 '>
-						Welcome to <br />
-						<span className='font-semibold relative cursor-pointer z-40 hover:text-white after:duration-200 after:contents-[""] after:h-[6px] after:w-[112%] after:bg-Accent after:absolute after:bottom-[2px] after:-left-[6px] after:-z-10 hover:after:h-[88%] '>
-							Mad Chef
-						</span>
-						<br />
-						Find America's best chefs
+				<div className='w-1/2'>
+					<h2 className='text-3xl font-semibold font-Popins relative z-50 '>
+						Mad Chef
 					</h2>
-					<Link to="/dashboard" className='btn btn-primary inline-block mt-4'>Explore</Link>
+					<p className='font-Popins'>
+						Discover Delicious and Healthy Dishes to Delight and
+						Satisfy Your Family's Plates"
+					</p>
+					<Link
+						to='/dashboard'
+						className='btn btn-primary inline-block mt-4'>
+						Explore
+					</Link>
 				</div>
 			</div>
-			
+
 			{/* Right Container */}
 			<div className='w-1/2 hidden md:flex justify-center items-center relative'>
 				{/* Right side blobs */}
