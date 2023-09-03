@@ -29,44 +29,21 @@ const Login = () => {
 		const email = form.email.value;
 		const password = form.password.value;
 
-		// logInUserWithEmail(email, password)
-		// 	.then((data) => {
-		// 		const user = data.user;
-		// 		// const userData = {
-		// 		// 	email: user.email,
-		// 		// 	favorites: [],
-		// 		// };
-		// 		// setUser({
-		// 		// 	name: user.displayName,
-		// 		// 	...userData,
-		// 		// });
-		// 		fetch(
-		// 			`http://localhost:5000/users/user/favorites?email=${user.email}`
-		// 		)
-		// 			.then((res) => res.json())
-		// 			.then((data) => {
-		// 				console.log(data);
-		// 				// if (data.insertedId.length) {
-		// 				// 	notify('success', 'Account created successfully!');
-
-		// 				// 	// Reset form
-		// 				// 	form.reset();
-		// 				// } else {
-		// 				// 	notify('error', 'Something went wrong!');
-		// 				// }
-		// 			});
-		// 	})
-		// 	.catch((err) => {
-		// 		const e = err.code
-		// 			.split('.')[0]
-		// 			.split('/')[1]
-		// 			.replace(/-/g, ' ');
-
-		// 		const error = e.charAt(0).toUpperCase() + e.slice(1) + '.';
-
-		// 		notify('error', error);
-		// 	});
-		// form.reset();
+		logInUserWithEmail(email, password)
+			.then((userData) => {
+				notify('success', 'Signed in successfully!');
+				const favorites = getFavoritesFromDB(userData.user.email);
+				const user = {
+					name: userData.user.displayName,
+					email: userData.user.email,
+					favorites: favorites ? favorites : [],
+				};
+				setUser(user);
+			})
+			.catch((err) => {
+				showError(err);
+			});
+		form.reset();
 	};
 
 	// * Login with Google
