@@ -6,6 +6,7 @@ import { useContext, useState } from 'react';
 import notify from '../../../customHooks/notify';
 import { AuthContext } from '../../../providers/authProvider/authProvider';
 import postUserDataToDB from '../../../customHooks/postUserDataToDB';
+import showError from '../../../customHooks/showError';
 
 const SignUp = () => {
 	// ! Required variables
@@ -34,47 +35,19 @@ const SignUp = () => {
 			return;
 		} else {
 			createUserWithEmail(email, password)
-				.then((data) => {
-					const newUser = data.user;
-					const userData = {
-						email: newUser.email,
+				.then((userData) => {
+					const newUser = {
+						email: userData.user.email,
 						favorites: [],
 					};
-					setUser({
-						name: newUser.displayName,
-						...userData,
-					});
-					fetch('http://localhost:5000/users/user', {
-						method: 'POST',
-						headers: {
-							'Content-Type': 'application/json',
-						},
-						body: JSON.stringify(userData),
-					})
-						.then((res) => res.json())
-						.then((data) => {
-							if (data.insertedId.length) {
-								notify(
-									'success',
-									'Account created successfully!'
-								);
-
-								// Reset form
-								form.reset();
-							} else {
-								notify('error', 'Something went wrong!');
-							}
-						});
+					postUserDataToDB(
+						newUser,
+						userData.user.displayName,
+						setUser
+					);
 				})
 				.catch((err) => {
-					const e = err.code
-						.split('.')[0]
-						.split('/')[1]
-						.replace(/-/g, ' ');
-
-					const error = e.charAt(0).toUpperCase() + e.slice(1) + '.';
-
-					notify('error', error);
+					showError(err);
 				});
 		}
 	};
@@ -91,14 +64,7 @@ const SignUp = () => {
 				postUserDataToDB(newUser, userData.user.displayName, setUser);
 			})
 			.catch((err) => {
-				const e = err.code
-					.split('.')[0]
-					.split('/')[1]
-					.replace(/-/g, ' ');
-
-				const error = e.charAt(0).toUpperCase() + e.slice(1) + '.';
-
-				notify('error', error);
+				showError(err);
 			});
 	};
 
@@ -107,22 +73,13 @@ const SignUp = () => {
 		createUserWithFacebook()
 			.then((userData) => {
 				const newUser = {
-					name: userData.user.displayName,
 					email: userData.user.email,
 					favorites: [],
 				};
-				setUser(newUser);
-				notify('success', 'Signed in successfully!');
+				postUserDataToDB(newUser, userData.user.displayName, setUser);
 			})
 			.catch((err) => {
-				const e = err.code
-					.split('.')[0]
-					.split('/')[1]
-					.replace(/-/g, ' ');
-
-				const error = e.charAt(0).toUpperCase() + e.slice(1) + '.';
-
-				notify('error', error);
+				showError(err);
 			});
 	};
 
@@ -131,22 +88,13 @@ const SignUp = () => {
 		createUserWithGithub()
 			.then((userData) => {
 				const newUser = {
-					name: userData.user.displayName,
 					email: userData.user.email,
 					favorites: [],
 				};
-				setUser(newUser);
-				notify('success', 'Signed in successfully!');
+				postUserDataToDB(newUser, userData.user.displayName, setUser);
 			})
 			.catch((err) => {
-				const e = err.code
-					.split('.')[0]
-					.split('/')[1]
-					.replace(/-/g, ' ');
-
-				const error = e.charAt(0).toUpperCase() + e.slice(1) + '.';
-
-				notify('error', error);
+				showError(err);
 			});
 	};
 
