@@ -1,20 +1,27 @@
-import { FaGithub } from 'react-icons/fa6';
+import { FaGithub, FaEyeSlash, FaEye } from 'react-icons/fa6';
 import { FcGoogle } from 'react-icons/fc';
 import { Link } from 'react-router-dom';
-import notify from '../../../customHooks/notify';
+import validatePassword from '../../../customHooks/validatePassword';
+import { useState } from 'react';
 
 const SignUp = () => {
+	// ! Required variables
+	const [passwordType, setPasswordType] = useState(false);
+
 	const handleSignUpWithEmail = (e) => {
 		e.preventDefault();
 		const form = e.target;
 		const email = form.email.value;
 		const password = form.password.value;
 		const confirmPassword = form.confirmPassword.value;
-		console.log(email, password, confirmPassword);
 
-		if (password !== confirmPassword) {
-			notify('error', "Password didn't matched");
-		} 
+		// ! Validate password
+		const result = validatePassword(password, confirmPassword);
+		if (!result) {
+			return;
+		} else {
+			console.log('sign up with email');
+		}
 	};
 
 	return (
@@ -35,7 +42,7 @@ const SignUp = () => {
 						id='email'
 						name='email'
 						placeholder='Enter your email.'
-						className='w-96 px-3 py-1 outline-primary rounded'
+						className='w-96 px-3 py-1 outline-Primary rounded'
 						required
 					/>
 				</>
@@ -47,11 +54,11 @@ const SignUp = () => {
 						Password
 					</label>
 					<input
-						type='password'
+						type={passwordType ? 'password' : 'text'}
 						id='password'
 						name='password'
 						placeholder='Enter your password.'
-						className='w-96 px-3 py-1 outline-primary rounded'
+						className='w-96 px-3 py-1 outline-Primary rounded'
 						required
 					/>
 				</>
@@ -63,11 +70,11 @@ const SignUp = () => {
 						Confirm Password
 					</label>
 					<input
-						type='password'
+						type={passwordType ? 'password' : 'text'}
 						id='confirm-password'
 						name='confirmPassword'
 						placeholder='Confirm your password.'
-						className='w-96 px-3 py-1 outline-primary rounded'
+						className='w-96 px-3 py-1 outline-Primary rounded'
 						required
 					/>
 				</>
