@@ -49,7 +49,7 @@ const Login = () => {
 	// 	console.log('clicked');
 	// };
 	return (
-		<div className='w-1/3 mx-auto my-20 px-10 py-14 bg-Primary/60 font-Popins rounded'>
+		<div className='w-1/3 mx-auto my-20 px-10 pt-14 pb-8 bg-Primary/60 font-Popins rounded'>
 			<h2 className='text-4xl text-center font-Vollokorn mb-8'>Login</h2>
 			<form
 				className='w-fit mx-auto px-5'

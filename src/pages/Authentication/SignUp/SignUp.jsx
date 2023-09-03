@@ -1,4 +1,4 @@
-import { FaGithub, FaEyeSlash, FaEye } from 'react-icons/fa6';
+import { FaGithub, FaEyeSlash, FaEye, FaFacebook } from 'react-icons/fa6';
 import { FcGoogle } from 'react-icons/fc';
 import { Link } from 'react-router-dom';
 import validatePassword from '../../../customHooks/validatePassword';
@@ -9,8 +9,14 @@ import { AuthContext } from '../../../providers/authProvider/authProvider';
 const SignUp = () => {
 	// ! Required variables
 	const [passwordType, setPasswordType] = useState(true);
-	const { createUserWithEmail } = useContext(AuthContext);
+	const {
+		setUser,
+		createUserWithEmail,
+		createUserWithGoogle,
+		createUserWithFacebook,
+	} = useContext(AuthContext);
 
+	// * Sign up with Email
 	const handleSignUpWithEmail = (e) => {
 		e.preventDefault();
 		const form = e.target;
@@ -27,11 +33,15 @@ const SignUp = () => {
 		} else {
 			createUserWithEmail(email, password)
 				.then((data) => {
-					const user = data.user;
+					const newUser = data.user;
 					const userData = {
-						email: user.email,
+						email: newUser.email,
 						favorites: [],
 					};
+					setUser({
+						name: newUser.displayName,
+						...userData,
+					});
 					fetch('http://localhost:5000/users/user', {
 						method: 'POST',
 						headers: {
@@ -46,6 +56,9 @@ const SignUp = () => {
 									'success',
 									'Account created successfully!'
 								);
+
+								// Reset form
+								form.reset();
 							} else {
 								notify('error', 'Something went wrong!');
 							}
@@ -62,6 +75,53 @@ const SignUp = () => {
 					notify('error', error);
 				});
 		}
+	};
+
+	// * Sign up with Google
+	const handleSignUpWithGoogle = () => {
+		createUserWithGoogle()
+			.then((userData) => {
+				const newUser = {
+					name: userData.user.displayName,
+					email: userData.user.email,
+					favorites: [],
+				};
+				setUser(newUser);
+				notify('success', 'Signed in successfully!');
+			})
+			.catch((err) => {
+				const e = err.code
+					.split('.')[0]
+					.split('/')[1]
+					.replace(/-/g, ' ');
+
+				const error = e.charAt(0).toUpperCase() + e.slice(1) + '.';
+
+				notify('error', error);
+			});
+	};
+
+	const handleSignUpWithFacebook = () => {
+		createUserWithFacebook()
+			.then((userData) => {
+				const newUser = {
+					name: userData.user.displayName,
+					email: userData.user.email,
+					favorites: [],
+				};
+				setUser(newUser);
+				notify('success', 'Signed in successfully!');
+			})
+			.catch((err) => {
+				const e = err.code
+					.split('.')[0]
+					.split('/')[1]
+					.replace(/-/g, ' ');
+
+				const error = e.charAt(0).toUpperCase() + e.slice(1) + '.';
+
+				notify('error', error);
+			});
 	};
 
 	return (
@@ -155,7 +215,14 @@ const SignUp = () => {
 				<div className='w-full'>
 					<p className='text-xl text-center mt-5 mb-2'>Or</p>
 					<div className='text-4xl flex justify-center gap-x-5'>
-						<FcGoogle className='cursor-pointer' />
+						<FcGoogle
+							className='cursor-pointer'
+							onClick={handleSignUpWithGoogle}
+						/>
+						<FaFacebook
+							className='cursor-pointer text-blue-600'
+							onClick={handleSignUpWithFacebook}
+						/>
 						<FaGithub className='cursor-pointer' />
 					</div>
 				</div>
