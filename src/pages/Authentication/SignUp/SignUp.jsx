@@ -14,6 +14,7 @@ const SignUp = () => {
 		createUserWithEmail,
 		createUserWithGoogle,
 		createUserWithFacebook,
+		createUserWithGithub,
 	} = useContext(AuthContext);
 
 	// * Sign up with Email
@@ -101,8 +102,32 @@ const SignUp = () => {
 			});
 	};
 
+	// * Sign up with Facebook
 	const handleSignUpWithFacebook = () => {
 		createUserWithFacebook()
+			.then((userData) => {
+				const newUser = {
+					name: userData.user.displayName,
+					email: userData.user.email,
+					favorites: [],
+				};
+				setUser(newUser);
+				notify('success', 'Signed in successfully!');
+			})
+			.catch((err) => {
+				const e = err.code
+					.split('.')[0]
+					.split('/')[1]
+					.replace(/-/g, ' ');
+
+				const error = e.charAt(0).toUpperCase() + e.slice(1) + '.';
+
+				notify('error', error);
+			});
+	};
+
+	const handleSignUpWithGithub = () => {
+		createUserWithGithub()
 			.then((userData) => {
 				const newUser = {
 					name: userData.user.displayName,
@@ -223,7 +248,10 @@ const SignUp = () => {
 							className='cursor-pointer text-blue-600'
 							onClick={handleSignUpWithFacebook}
 						/>
-						<FaGithub className='cursor-pointer' />
+						<FaGithub
+							className='cursor-pointer'
+							onClick={handleSignUpWithGithub}
+						/>
 					</div>
 				</div>
 			</form>

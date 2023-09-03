@@ -1,6 +1,7 @@
 import { createContext, useState } from 'react';
 import {
 	FacebookAuthProvider,
+	GithubAuthProvider,
 	GoogleAuthProvider,
 	createUserWithEmailAndPassword,
 	getAuth,
@@ -16,6 +17,7 @@ const AuthProvider = ({ children }) => {
 	const auth = getAuth(app);
 	const googleProvider = new GoogleAuthProvider();
 	const facebookProvider = new FacebookAuthProvider();
+	const githubProvider = new GithubAuthProvider();
 	const [user, setUser] = useState(null);
 
 	// ! Create user
@@ -24,8 +26,9 @@ const AuthProvider = ({ children }) => {
 
 	const createUserWithGoogle = () => signInWithPopup(auth, googleProvider);
 
-	const createUserWithFacebook = () =>
-		signInWithPopup(auth, facebookProvider);
+	const createUserWithFacebook = () => signInWithPopup(auth, facebookProvider);
+
+	const createUserWithGithub = () => signInWithPopup(auth, githubProvider);
 
 	// * Module scaffolding
 	const authInfo = {
@@ -34,6 +37,7 @@ const AuthProvider = ({ children }) => {
 		createUserWithEmail,
 		createUserWithGoogle,
 		createUserWithFacebook,
+		createUserWithGithub,
 	};
 
 	return (
