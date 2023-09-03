@@ -1,11 +1,15 @@
 import { FcGoogle } from 'react-icons/fc';
 import { FaFacebook, FaPinterest, FaApple } from 'react-icons/fa6';
 import { Link, useLocation } from 'react-router-dom';
+import { useContext } from 'react';
+import { AuthContext } from '../../../providers/authProvider/authProvider';
 
 const Login = () => {
 	// Get location
-	const location = useLocation();
-	const from = location.state?.from?.pathname || '/';
+	// const location = useLocation();
+	// const from = location.state?.from?.pathname || '/';
+	const { name } = useContext(AuthContext);
+	console.log(name);
 
 	// Handle user login with email and password
 	const handleLoginWithEmail = (e) => {
@@ -98,9 +102,7 @@ const Login = () => {
 				<div className='w-full'>
 					<p className='text-xl text-center mt-5 mb-2'>Or</p>
 					<div className='text-4xl flex justify-center gap-x-5'>
-						<FcGoogle
-							className='cursor-pointer'
-						/>
+						<FcGoogle className='cursor-pointer' />
 						<FaFacebook className='cursor-pointer text-blue-600' />
 						<FaPinterest className='cursor-pointer text-red-600' />
 						<FaApple className='cursor-pointer' />
