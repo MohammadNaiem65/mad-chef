@@ -4,6 +4,8 @@ import { Link, useLocation } from 'react-router-dom';
 import { useContext, useState } from 'react';
 import { AuthContext } from '../../../providers/authProvider/authProvider';
 import notify from '../../../customHooks/notify';
+import showError from '../../../customHooks/showError';
+import getFavoritesFromDB from '../../../customHooks/getFavoritesFromDB';
 
 const Login = () => {
 	// ! Required variables
@@ -26,78 +28,62 @@ const Login = () => {
 		const form = e.target;
 		const email = form.email.value;
 		const password = form.password.value;
-		logInUserWithEmail(email, password)
-			.then((data) => {
-				const user = data.user;
-				// const userData = {
-				// 	email: user.email,
-				// 	favorites: [],
-				// };
-				// setUser({
-				// 	name: user.displayName,
-				// 	...userData,
-				// });
-				fetch(
-					`http://localhost:5000/users/user/favorites?email=${user.email}`
-				)
-					.then((res) => res.json())
-					.then((data) => {
-						console.log(data);
-						// if (data.insertedId.length) {
-						// 	notify('success', 'Account created successfully!');
 
-						// 	// Reset form
-						// 	form.reset();
-						// } else {
-						// 	notify('error', 'Something went wrong!');
-						// }
-					});
-			})
-			.catch((err) => {
-				const e = err.code
-					.split('.')[0]
-					.split('/')[1]
-					.replace(/-/g, ' ');
+		// logInUserWithEmail(email, password)
+		// 	.then((data) => {
+		// 		const user = data.user;
+		// 		// const userData = {
+		// 		// 	email: user.email,
+		// 		// 	favorites: [],
+		// 		// };
+		// 		// setUser({
+		// 		// 	name: user.displayName,
+		// 		// 	...userData,
+		// 		// });
+		// 		fetch(
+		// 			`http://localhost:5000/users/user/favorites?email=${user.email}`
+		// 		)
+		// 			.then((res) => res.json())
+		// 			.then((data) => {
+		// 				console.log(data);
+		// 				// if (data.insertedId.length) {
+		// 				// 	notify('success', 'Account created successfully!');
 
-				const error = e.charAt(0).toUpperCase() + e.slice(1) + '.';
+		// 				// 	// Reset form
+		// 				// 	form.reset();
+		// 				// } else {
+		// 				// 	notify('error', 'Something went wrong!');
+		// 				// }
+		// 			});
+		// 	})
+		// 	.catch((err) => {
+		// 		const e = err.code
+		// 			.split('.')[0]
+		// 			.split('/')[1]
+		// 			.replace(/-/g, ' ');
 
-				notify('error', error);
-			});
-		form.reset();
+		// 		const error = e.charAt(0).toUpperCase() + e.slice(1) + '.';
+
+		// 		notify('error', error);
+		// 	});
+		// form.reset();
 	};
 
 	// * Login with Google
 	const handleLoginWithGoogle = () => {
 		createUserWithGoogle()
 			.then((userData) => {
-				fetch(
-					`http://localhost:5000/users/user/favorites?email=${userData.user.email}`
-				)
-					// .then((res) => res.json())
-					.then((data) => {
-						console.log(data);
-						// if (data.insertedId.length) {
-						// 	notify('success', 'Account created successfully!');
-
-						// 	// Reset form
-						// 	form.reset();
-						// } else {
-						// 	notify('error', 'Something went wrong!');
-						// }
-					});
 				notify('success', 'Signed in successfully!');
+				const favorites = getFavoritesFromDB(userData.user.email);
+				const user = {
+					name: userData.user.displayName,
+					email: userData.user.email,
+					favorites: favorites ? favorites : [],
+				};
+				setUser(user);
 			})
 			.catch((err) => {
-				// const e = err.code
-				// 	.split('.')[0]
-				// 	.split('/')[1]
-				// 	.replace(/-/g, ' ');
-
-				// const error = e.charAt(0).toUpperCase() + e.slice(1) + '.';
-
-				// notify('error', error);
-
-				console.log(err);
+				showError(err);
 			});
 	};
 
@@ -105,23 +91,17 @@ const Login = () => {
 	const handleLoginWithFacebook = () => {
 		createUserWithFacebook()
 			.then((userData) => {
-				const newUser = {
+				notify('success', 'Signed in successfully!');
+				const favorites = getFavoritesFromDB(userData.user.email);
+				const user = {
 					name: userData.user.displayName,
 					email: userData.user.email,
-					favorites: [],
+					favorites: favorites ? favorites : [],
 				};
-				setUser(newUser);
-				notify('success', 'Signed in successfully!');
+				setUser(user);
 			})
 			.catch((err) => {
-				const e = err.code
-					.split('.')[0]
-					.split('/')[1]
-					.replace(/-/g, ' ');
-
-				const error = e.charAt(0).toUpperCase() + e.slice(1) + '.';
-
-				notify('error', error);
+				showError(err);
 			});
 	};
 
@@ -129,23 +109,17 @@ const Login = () => {
 	const handleLoginWithGithub = () => {
 		createUserWithGithub()
 			.then((userData) => {
-				const newUser = {
+				notify('success', 'Signed in successfully!');
+				const favorites = getFavoritesFromDB(userData.user.email);
+				const user = {
 					name: userData.user.displayName,
 					email: userData.user.email,
-					favorites: [],
+					favorites: favorites ? favorites : [],
 				};
-				setUser(newUser);
-				notify('success', 'Signed in successfully!');
+				setUser(user);
 			})
 			.catch((err) => {
-				const e = err.code
-					.split('.')[0]
-					.split('/')[1]
-					.replace(/-/g, ' ');
-
-				const error = e.charAt(0).toUpperCase() + e.slice(1) + '.';
-
-				notify('error', error);
+				showError(err);
 			});
 	};
 

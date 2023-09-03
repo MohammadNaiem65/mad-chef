@@ -3,7 +3,6 @@ import { FcGoogle } from 'react-icons/fc';
 import { Link } from 'react-router-dom';
 import validatePassword from '../../../customHooks/validatePassword';
 import { useContext, useState } from 'react';
-import notify from '../../../customHooks/notify';
 import { AuthContext } from '../../../providers/authProvider/authProvider';
 import postUserDataToDB from '../../../customHooks/postUserDataToDB';
 import showError from '../../../customHooks/showError';
