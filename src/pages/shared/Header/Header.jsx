@@ -81,8 +81,8 @@ const Header = () => {
 					<HeaderActiveLink to='/dashboard'>
 						Dashboard
 					</HeaderActiveLink>
-					<HeaderActiveLink to='/favorites'>
-						Favorites
+					<HeaderActiveLink to='/user-dashboard'>
+						User Dashboard
 					</HeaderActiveLink>
 					<HeaderActiveLink to='/consult'>Consult</HeaderActiveLink>
 					<HeaderActiveLink to='/blog'>Blog</HeaderActiveLink>

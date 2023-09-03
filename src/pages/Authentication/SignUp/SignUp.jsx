@@ -2,11 +2,14 @@ import { FaGithub, FaEyeSlash, FaEye } from 'react-icons/fa6';
 import { FcGoogle } from 'react-icons/fc';
 import { Link } from 'react-router-dom';
 import validatePassword from '../../../customHooks/validatePassword';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
+import notify from '../../../customHooks/notify';
+import { AuthContext } from '../../../providers/authProvider/authProvider';
 
 const SignUp = () => {
 	// ! Required variables
 	const [passwordType, setPasswordType] = useState(true);
+	const { createUserWithEmail } = useContext(AuthContext);
 
 	const handleSignUpWithEmail = (e) => {
 		e.preventDefault();
@@ -17,10 +20,47 @@ const SignUp = () => {
 
 		// ! Validate password
 		const result = validatePassword(password, confirmPassword);
+
+		// ! Sign up user
 		if (!result) {
 			return;
 		} else {
-			console.log('sign up with email');
+			createUserWithEmail(email, password)
+				.then((data) => {
+					const user = data.user;
+					const userData = {
+						email: user.email,
+						favorites: [],
+					};
+					fetch('http://localhost:5000/users/user', {
+						method: 'POST',
+						headers: {
+							'Content-Type': 'application/json',
+						},
+						body: JSON.stringify(userData),
+					})
+						.then((res) => res.json())
+						.then((data) => {
+							if (data.insertedId.length) {
+								notify(
+									'success',
+									'Account created successfully!'
+								);
+							} else {
+								notify('error', 'Something went wrong!');
+							}
+						});
+				})
+				.catch((err) => {
+					const e = err.code
+						.split('.')[0]
+						.split('/')[1]
+						.replace(/-/g, ' ');
+
+					const error = e.charAt(0).toUpperCase() + e.slice(1) + '.';
+
+					notify('error', error);
+				});
 		}
 	};
 

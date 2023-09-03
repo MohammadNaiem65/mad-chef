@@ -7,10 +7,10 @@ import Recipes from '../pages/Dashboard/Recipes/Recipes';
 import RecipeDetails from '../pages/Dashboard/RecipeDetails/RecipeDetails';
 import ErrorPage from '../pages/ErrorPage/ErrorPage';
 import Blog from '../pages/Blog/Blog';
-import Favorites from '../pages/Favorites/Favorites';
 import Consult from '../pages/Consult/Consult';
 import SignUp from '../pages/Authentication/SignUp/SignUp';
 import Login from '../pages/Authentication/Login/Login';
+import UserDashboard from '../pages/UserDashboard/UserDashboard';
 
 export const mainRoutes = createBrowserRouter([
 	{
@@ -63,8 +63,8 @@ export const mainRoutes = createBrowserRouter([
 				],
 			},
 			{
-				path: '/favorites',
-				element: <Favorites />,
+				path: '/user-dashboard',
+				element: <UserDashboard />,
 			},
 			{
 				path: '/consult',

@@ -66,7 +66,7 @@ const Login = () => {
 						id='email'
 						name='email'
 						placeholder='Enter your email.'
-						className='w-96 px-3 py-1 outline-primary rounded'
+						className='w-96 px-3 py-1 outline-Primary rounded'
 						required
 					/>
 				</>
@@ -84,7 +84,7 @@ const Login = () => {
 							id='password'
 							name='password'
 							placeholder='Enter your password.'
-							className='w-96 px-3 py-1 outline-primary rounded'
+							className='w-96 px-3 py-1 outline-Primary rounded'
 							required
 						/>
 						<p
