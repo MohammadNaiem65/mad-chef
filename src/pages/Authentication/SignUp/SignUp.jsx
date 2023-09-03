@@ -1,10 +1,20 @@
-import { FaApple, FaFacebook, FaPinterest } from 'react-icons/fa6';
+import { FaGithub } from 'react-icons/fa6';
 import { FcGoogle } from 'react-icons/fc';
 import { Link } from 'react-router-dom';
+import notify from '../../../customHooks/notify';
 
 const SignUp = () => {
 	const handleSignUpWithEmail = (e) => {
 		e.preventDefault();
+		const form = e.target;
+		const email = form.email.value;
+		const password = form.password.value;
+		const confirmPassword = form.confirmPassword.value;
+		console.log(email, password, confirmPassword);
+
+		if (password !== confirmPassword) {
+			notify('error', "Password didn't matched");
+		} 
 	};
 
 	return (
@@ -55,7 +65,7 @@ const SignUp = () => {
 					<input
 						type='password'
 						id='confirm-password'
-						name='confirm-password'
+						name='confirmPassword'
 						placeholder='Confirm your password.'
 						className='w-96 px-3 py-1 outline-primary rounded'
 						required
@@ -79,9 +89,7 @@ const SignUp = () => {
 					<p className='text-xl text-center mt-5 mb-2'>Or</p>
 					<div className='text-4xl flex justify-center gap-x-5'>
 						<FcGoogle className='cursor-pointer' />
-						<FaFacebook className='cursor-pointer text-blue-600' />
-						<FaPinterest className='cursor-pointer text-red-600' />
-						<FaApple className='cursor-pointer' />
+						<FaGithub className='cursor-pointer' />
 					</div>
 				</div>
 			</form>
