@@ -5,6 +5,7 @@ import validatePassword from '../../../customHooks/validatePassword';
 import { useContext, useState } from 'react';
 import notify from '../../../customHooks/notify';
 import { AuthContext } from '../../../providers/authProvider/authProvider';
+import postUserDataToDB from '../../../customHooks/postUserDataToDB';
 
 const SignUp = () => {
 	// ! Required variables
@@ -83,12 +84,11 @@ const SignUp = () => {
 		createUserWithGoogle()
 			.then((userData) => {
 				const newUser = {
-					name: userData.user.displayName,
 					email: userData.user.email,
 					favorites: [],
 				};
-				setUser(newUser);
-				notify('success', 'Signed in successfully!');
+
+				postUserDataToDB(newUser, userData.user.displayName, setUser);
 			})
 			.catch((err) => {
 				const e = err.code

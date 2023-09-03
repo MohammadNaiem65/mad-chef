@@ -5,6 +5,7 @@ import {
 	GoogleAuthProvider,
 	createUserWithEmailAndPassword,
 	getAuth,
+	signInWithEmailAndPassword,
 	signInWithPopup,
 } from 'firebase/auth';
 import app from '../../firebase/firebase.config';
@@ -30,6 +31,9 @@ const AuthProvider = ({ children }) => {
 
 	const createUserWithGithub = () => signInWithPopup(auth, githubProvider);
 
+	// ! Login user
+	const logInUserWithEmail = (email, password) => signInWithEmailAndPassword(auth, email, password);
+
 	// * Module scaffolding
 	const authInfo = {
 		user,
@@ -38,6 +42,7 @@ const AuthProvider = ({ children }) => {
 		createUserWithGoogle,
 		createUserWithFacebook,
 		createUserWithGithub,
+		logInUserWithEmail,
 	};
 
 	return (
