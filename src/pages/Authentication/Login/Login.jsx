@@ -1,15 +1,21 @@
 import { FcGoogle } from 'react-icons/fc';
-import { FaEye, FaEyeSlash, FaGithub } from 'react-icons/fa6';
+import { FaEye, FaEyeSlash, FaFacebook, FaGithub } from 'react-icons/fa6';
 import { Link, useLocation } from 'react-router-dom';
 import { useContext, useState } from 'react';
 import { AuthContext } from '../../../providers/authProvider/authProvider';
+import notify from '../../../customHooks/notify';
 
 const Login = () => {
 	// ! Required variables
 	// Get location
 	// const location = useLocation();
 	// const from = location.state?.from?.pathname || '/';
-	const { name } = useContext(AuthContext);
+	const {
+		setUser,
+		createUserWithGoogle,
+		createUserWithFacebook,
+		createUserWithGithub,
+	} = useContext(AuthContext);
 	const [passwordType, setPasswordType] = useState(true);
 
 	// Handle user login with email and password
@@ -45,9 +51,78 @@ const Login = () => {
 		// form.reset();
 	};
 
-	// const handleLoginWithGoogle = () => {
-	// 	console.log('clicked');
-	// };
+	// * Login with Google
+	const handleLoginWithGoogle = () => {
+		createUserWithGoogle()
+			.then((userData) => {
+				const newUser = {
+					name: userData.user.displayName,
+					email: userData.user.email,
+					favorites: [],
+				};
+				setUser(newUser);
+				notify('success', 'Signed in successfully!');
+			})
+			.catch((err) => {
+				const e = err.code
+					.split('.')[0]
+					.split('/')[1]
+					.replace(/-/g, ' ');
+
+				const error = e.charAt(0).toUpperCase() + e.slice(1) + '.';
+
+				notify('error', error);
+			});
+	};
+
+	// * Login with Facebook
+	const handleLoginWithFacebook = () => {
+		createUserWithFacebook()
+			.then((userData) => {
+				const newUser = {
+					name: userData.user.displayName,
+					email: userData.user.email,
+					favorites: [],
+				};
+				setUser(newUser);
+				notify('success', 'Signed in successfully!');
+			})
+			.catch((err) => {
+				const e = err.code
+					.split('.')[0]
+					.split('/')[1]
+					.replace(/-/g, ' ');
+
+				const error = e.charAt(0).toUpperCase() + e.slice(1) + '.';
+
+				notify('error', error);
+			});
+	};
+
+	// * Login with Github
+	const handleLoginWithGithub = () => {
+		createUserWithGithub()
+			.then((userData) => {
+				const newUser = {
+					name: userData.user.displayName,
+					email: userData.user.email,
+					favorites: [],
+				};
+				setUser(newUser);
+				notify('success', 'Signed in successfully!');
+			})
+			.catch((err) => {
+				const e = err.code
+					.split('.')[0]
+					.split('/')[1]
+					.replace(/-/g, ' ');
+
+				const error = e.charAt(0).toUpperCase() + e.slice(1) + '.';
+
+				notify('error', error);
+			});
+	};
+
 	return (
 		<div className='w-1/3 mx-auto my-20 px-10 pt-14 pb-8 bg-Primary/60 font-Popins rounded'>
 			<h2 className='text-4xl text-center font-Vollokorn mb-8'>Login</h2>
@@ -108,11 +183,23 @@ const Login = () => {
 					type='submit'>
 					Login
 				</button>
+
+				{/* Footer Links */}
 				<div className='w-full'>
 					<p className='text-xl text-center mt-5 mb-2'>Or</p>
 					<div className='text-4xl flex justify-center gap-x-5'>
-						<FcGoogle className='cursor-pointer' />
-						<FaGithub className='cursor-pointer' />
+						<FcGoogle
+							className='cursor-pointer'
+							onClick={handleLoginWithGoogle}
+						/>
+						<FaFacebook
+							className='cursor-pointer text-blue-600'
+							onClick={handleLoginWithFacebook}
+						/>
+						<FaGithub
+							className='cursor-pointer'
+							onClick={handleLoginWithGithub}
+						/>
 					</div>
 				</div>
 			</form>

@@ -126,6 +126,7 @@ const SignUp = () => {
 			});
 	};
 
+	// * Sign up with Github
 	const handleSignUpWithGithub = () => {
 		createUserWithGithub()
 			.then((userData) => {
