@@ -6,7 +6,7 @@ import { useState } from 'react';
 
 const SignUp = () => {
 	// ! Required variables
-	const [passwordType, setPasswordType] = useState(false);
+	const [passwordType, setPasswordType] = useState(true);
 
 	const handleSignUpWithEmail = (e) => {
 		e.preventDefault();
@@ -26,7 +26,9 @@ const SignUp = () => {
 
 	return (
 		<div className='w-1/3 mx-auto my-14 px-10 py-8 bg-Primary/60 font-Popins rounded'>
-			<h2 className='text-4xl text-center font-Vollokorn'>Sign Up</h2>
+			<h2 className='text-4xl text-center font-Vollokorn mb-8'>
+				Sign Up
+			</h2>
 			<form
 				className='w-fit mx-auto px-5'
 				onSubmit={handleSignUpWithEmail}>
@@ -46,6 +48,7 @@ const SignUp = () => {
 						required
 					/>
 				</>
+
 				{/* Password */}
 				<>
 					<label
@@ -53,30 +56,45 @@ const SignUp = () => {
 						className='text-xl block mb-1 mt-5 tracking-wide'>
 						Password
 					</label>
-					<input
-						type={passwordType ? 'password' : 'text'}
-						id='password'
-						name='password'
-						placeholder='Enter your password.'
-						className='w-96 px-3 py-1 outline-Primary rounded'
-						required
-					/>
+					<div className='relative'>
+						<input
+							type={passwordType ? 'password' : 'text'}
+							id='password'
+							name='password'
+							placeholder='Enter your password.'
+							className='w-96 px-3 py-1 outline-Primary rounded'
+							required
+						/>
+						<p
+							className='absolute top-1/2 right-2 -translate-y-1/2 cursor-pointer'
+							onClick={() => setPasswordType(!passwordType)}>
+							{passwordType ? <FaEyeSlash /> : <FaEye />}
+						</p>
+					</div>
 				</>
-				{/* Password */}
+
+				{/* Confirm password */}
 				<>
 					<label
 						htmlFor='confirm-password'
 						className='text-xl block mb-1 mt-5 tracking-wide'>
 						Confirm Password
 					</label>
-					<input
-						type={passwordType ? 'password' : 'text'}
-						id='confirm-password'
-						name='confirmPassword'
-						placeholder='Confirm your password.'
-						className='w-96 px-3 py-1 outline-Primary rounded'
-						required
-					/>
+					<div className='relative'>
+						<input
+							type={passwordType ? 'password' : 'text'}
+							id='confirm-password'
+							name='confirmPassword'
+							placeholder='Confirm your password.'
+							className='w-96 px-3 py-1 outline-Primary rounded'
+							required
+						/>
+						<p
+							className='absolute top-1/2 right-2 -translate-y-1/2 cursor-pointer'
+							onClick={() => setPasswordType(!passwordType)}>
+							{passwordType ? <FaEyeSlash /> : <FaEye />}
+						</p>
+					</div>
 				</>
 				<p className='mt-2'>
 					Already have an account?{' '}
@@ -92,6 +110,8 @@ const SignUp = () => {
 					type='submit'>
 					Sign Up
 				</button>
+
+				{/* Footer Links */}
 				<div className='w-full'>
 					<p className='text-xl text-center mt-5 mb-2'>Or</p>
 					<div className='text-4xl flex justify-center gap-x-5'>

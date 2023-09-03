@@ -1,15 +1,16 @@
 import { FcGoogle } from 'react-icons/fc';
-import { FaFacebook, FaPinterest, FaApple } from 'react-icons/fa6';
+import { FaEye, FaEyeSlash, FaGithub } from 'react-icons/fa6';
 import { Link, useLocation } from 'react-router-dom';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { AuthContext } from '../../../providers/authProvider/authProvider';
 
 const Login = () => {
+	// ! Required variables
 	// Get location
 	// const location = useLocation();
 	// const from = location.state?.from?.pathname || '/';
 	const { name } = useContext(AuthContext);
-	console.log(name);
+	const [passwordType, setPasswordType] = useState(true);
 
 	// Handle user login with email and password
 	const handleLoginWithEmail = (e) => {
@@ -49,7 +50,7 @@ const Login = () => {
 	// };
 	return (
 		<div className='w-1/3 mx-auto my-20 px-10 py-14 bg-Primary/60 font-Popins rounded'>
-			<h2 className='text-4xl text-center font-Vollokorn'>Login</h2>
+			<h2 className='text-4xl text-center font-Vollokorn mb-8'>Login</h2>
 			<form
 				className='w-fit mx-auto px-5'
 				onSubmit={handleLoginWithEmail}>
@@ -69,6 +70,7 @@ const Login = () => {
 						required
 					/>
 				</>
+
 				{/* Password */}
 				<>
 					<label
@@ -76,14 +78,21 @@ const Login = () => {
 						className='text-xl block mb-1 mt-5 tracking-wide'>
 						Password
 					</label>
-					<input
-						type='password'
-						id='password'
-						name='password'
-						placeholder='Enter your password.'
-						className='w-96 px-3 py-1 outline-primary rounded'
-						required
-					/>
+					<div className='relative'>
+						<input
+							type={passwordType ? 'password' : 'text'}
+							id='password'
+							name='password'
+							placeholder='Enter your password.'
+							className='w-96 px-3 py-1 outline-primary rounded'
+							required
+						/>
+						<p
+							className='absolute top-1/2 right-2 -translate-y-1/2 cursor-pointer'
+							onClick={() => setPasswordType(!passwordType)}>
+							{passwordType ? <FaEyeSlash /> : <FaEye />}
+						</p>
+					</div>
 				</>
 				<p className='mt-2'>
 					New to Brainiac Toys?{' '}
@@ -103,9 +112,7 @@ const Login = () => {
 					<p className='text-xl text-center mt-5 mb-2'>Or</p>
 					<div className='text-4xl flex justify-center gap-x-5'>
 						<FcGoogle className='cursor-pointer' />
-						<FaFacebook className='cursor-pointer text-blue-600' />
-						<FaPinterest className='cursor-pointer text-red-600' />
-						<FaApple className='cursor-pointer' />
+						<FaGithub className='cursor-pointer' />
 					</div>
 				</div>
 			</form>
