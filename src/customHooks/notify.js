@@ -9,6 +9,6 @@ export default function notify(type, text) {
 		pauseOnHover: false,
 		draggable: false,
 		progress: undefined,
-		theme: 'light',
+		theme: 'colored',
 	});
 }

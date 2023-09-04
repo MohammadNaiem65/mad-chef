@@ -1,6 +1,6 @@
 import { FcGoogle } from 'react-icons/fc';
 import { FaEye, FaEyeSlash, FaFacebook, FaGithub } from 'react-icons/fa6';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useContext, useState } from 'react';
 import { AuthContext } from '../../../providers/authProvider/authProvider';
 import notify from '../../../customHooks/notify';
@@ -9,11 +9,12 @@ import getFavoritesFromDB from '../../../customHooks/getFavoritesFromDB';
 
 const Login = () => {
 	// ! Required variables
-	// Get location
-	// const location = useLocation();
-	// const from = location.state?.from?.pathname || '/';
+	const navigate = useNavigate();
+	const location = useLocation();
+	const from = location.state?.from?.pathname || '/';
 	const {
 		setUser,
+		setShowLoader,
 		logInUserWithEmail,
 		createUserWithGoogle,
 		createUserWithFacebook,
@@ -24,7 +25,7 @@ const Login = () => {
 	// Handle user login with email and password
 	const handleLoginWithEmail = (e) => {
 		e.preventDefault();
-		// setLoading(true);
+		setShowLoader(true);
 		const form = e.target;
 		const email = form.email.value;
 		const password = form.password.value;
@@ -32,6 +33,7 @@ const Login = () => {
 		logInUserWithEmail(email, password)
 			.then((userData) => {
 				notify('success', 'Signed in successfully!');
+				setShowLoader(false);
 				const favorites = getFavoritesFromDB(userData.user.email);
 				const user = {
 					name: userData.user.displayName,
@@ -39,18 +41,22 @@ const Login = () => {
 					favorites: favorites ? favorites : [],
 				};
 				setUser(user);
+				navigate(from);
 			})
 			.catch((err) => {
 				showError(err);
+				setShowLoader(false);
 			});
 		form.reset();
 	};
 
 	// * Login with Google
 	const handleLoginWithGoogle = () => {
+		setShowLoader(true);
 		createUserWithGoogle()
 			.then((userData) => {
 				notify('success', 'Signed in successfully!');
+				setShowLoader(false);
 				const favorites = getFavoritesFromDB(userData.user.email);
 				const user = {
 					name: userData.user.displayName,
@@ -58,17 +64,21 @@ const Login = () => {
 					favorites: favorites ? favorites : [],
 				};
 				setUser(user);
+				navigate(from);
 			})
 			.catch((err) => {
 				showError(err);
+				setShowLoader(false);
 			});
 	};
 
 	// * Login with Facebook
 	const handleLoginWithFacebook = () => {
+		setShowLoader(true);
 		createUserWithFacebook()
 			.then((userData) => {
 				notify('success', 'Signed in successfully!');
+				setShowLoader(false);
 				const favorites = getFavoritesFromDB(userData.user.email);
 				const user = {
 					name: userData.user.displayName,
@@ -76,17 +86,21 @@ const Login = () => {
 					favorites: favorites ? favorites : [],
 				};
 				setUser(user);
+				navigate(from);
 			})
 			.catch((err) => {
 				showError(err);
+				setShowLoader(false);
 			});
 	};
 
 	// * Login with Github
 	const handleLoginWithGithub = () => {
+		setShowLoader(true);
 		createUserWithGithub()
 			.then((userData) => {
 				notify('success', 'Signed in successfully!');
+				setShowLoader(false);
 				const favorites = getFavoritesFromDB(userData.user.email);
 				const user = {
 					name: userData.user.displayName,
@@ -94,9 +108,11 @@ const Login = () => {
 					favorites: favorites ? favorites : [],
 				};
 				setUser(user);
+				navigate(from);
 			})
 			.catch((err) => {
 				showError(err);
+				setShowLoader(false);
 			});
 	};
 

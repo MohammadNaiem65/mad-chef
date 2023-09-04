@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import InvertedCard from '../InvertedCard/InvertedCard';
 import LargeCard from '../LargeCard/LargeCard';
 

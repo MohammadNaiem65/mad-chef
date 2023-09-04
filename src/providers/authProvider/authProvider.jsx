@@ -1,15 +1,17 @@
-import { createContext, useState } from 'react';
+import { createContext, useEffect, useState } from 'react';
 import {
 	FacebookAuthProvider,
 	GithubAuthProvider,
 	GoogleAuthProvider,
 	createUserWithEmailAndPassword,
 	getAuth,
+	onAuthStateChanged,
 	signInWithEmailAndPassword,
 	signInWithPopup,
 } from 'firebase/auth';
 import app from '../../firebase/firebase.config';
 import { ToastContainer } from 'react-toastify';
+import getFavoritesFromDB from '../../customHooks/getFavoritesFromDB';
 
 export const AuthContext = createContext({});
 
@@ -20,6 +22,7 @@ const AuthProvider = ({ children }) => {
 	const facebookProvider = new FacebookAuthProvider();
 	const githubProvider = new GithubAuthProvider();
 	const [user, setUser] = useState(null);
+	const [showLoader, setShowLoader] = useState(false);
 
 	// ! Create user
 	const createUserWithEmail = (email, password) =>
@@ -27,17 +30,40 @@ const AuthProvider = ({ children }) => {
 
 	const createUserWithGoogle = () => signInWithPopup(auth, googleProvider);
 
-	const createUserWithFacebook = () => signInWithPopup(auth, facebookProvider);
+	const createUserWithFacebook = () =>
+		signInWithPopup(auth, facebookProvider);
 
 	const createUserWithGithub = () => signInWithPopup(auth, githubProvider);
 
 	// ! Login user
-	const logInUserWithEmail = (email, password) => signInWithEmailAndPassword(auth, email, password);
+	const logInUserWithEmail = (email, password) =>
+		signInWithEmailAndPassword(auth, email, password);
+
+	// ! Get user data
+	useEffect(() => {
+		setShowLoader(true);
+		onAuthStateChanged(auth, (existedUser) => {
+			if (existedUser) {
+				const favorites = getFavoritesFromDB(existedUser.email);
+				const userData = {
+					name: existedUser.displayName,
+					email: existedUser.email,
+					favorites: favorites ? favorites : [],
+				};
+				setUser(userData);
+				setShowLoader(false);
+			} else {
+				setShowLoader(false);
+			}
+		});
+	}, []);
 
 	// * Module scaffolding
 	const authInfo = {
 		user,
 		setUser,
+		showLoader,
+		setShowLoader,
 		createUserWithEmail,
 		createUserWithGoogle,
 		createUserWithFacebook,
