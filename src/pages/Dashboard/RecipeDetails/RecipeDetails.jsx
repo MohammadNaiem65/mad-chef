@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import 'react-toastify/dist/ReactToastify.css';
 import { Link } from 'react-router-dom';
 import { FaStarHalfAlt } from 'react-icons/fa';
@@ -11,19 +11,32 @@ import {
 	FaHeartCircleCheck,
 } from 'react-icons/fa6';
 import notify from '../../../customHooks/notify';
+import { AuthContext } from '../../../providers/authProvider/authProvider';
 
 const RecipeDetails = () => {
 	// ! Required variables
-	const recipe = JSON.parse(sessionStorage.getItem('recipe'));
-	const prevLocation = sessionStorage.getItem('prev-location');
-	const { picture, name, rating, ingredients, method } = recipe;
+	const { user } = useContext(AuthContext);
 	const [hovered, setHovered] = useState(false);
 	const [isAddedToFav, setIsAddedToFav] = useState(false);
-
-	console.log(recipe);
+	const recipe = JSON.parse(sessionStorage.getItem('recipe'));
+	const prevLocation = sessionStorage.getItem('prev-location');
+	const { picture, name, rating, ingredients, method, _id } = recipe;
 
 	const addToFav = () => {
-		notify('success', 'Added to Favorite list.');
+		fetch(`http://localhost:5000/users/user/favorites/${_id}?email=${user.email}`, {
+			method: 'PATCH',
+		})
+			.then((res) => res.json())
+			.then((data) => {
+				if (data.modifiedCount === 1) {
+					notify('success', 'Added to Favorite list.');
+				} else if (
+					data.matchedCount === 1 &&
+					data.modifiedCount === 0
+				) {
+					notify('info', 'Recipe already exist in the favorite ');
+				}
+			});
 
 		setIsAddedToFav(true);
 	};

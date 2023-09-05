@@ -1,8 +1,6 @@
 import { Outlet, useLoaderData } from 'react-router-dom';
 import { FaBriefcase, FaStar } from 'react-icons/fa6';
-import { FcLike } from 'react-icons/fc';
 import { MdFastfood } from 'react-icons/md';
-import Recipe from '../Recipe/Recipe';
 
 const Chef = () => {
 	const chef = useLoaderData();
@@ -13,7 +11,6 @@ const Chef = () => {
 		rating,
 		yearsOfExperience,
 		availableRecipes,
-		id,
 	} = chef;
 	return (
 		<div>
@@ -51,7 +48,7 @@ const Chef = () => {
 					</div>
 				</div>
 			</div>
-			{/* Chef banner end */}
+
 			{/* Available Recipes section starts here  */}
 			<section className='my-5'>
 				<Outlet />

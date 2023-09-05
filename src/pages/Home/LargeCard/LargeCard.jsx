@@ -1,8 +1,9 @@
-import { FaHeart, FaRegStar, FaStar, FaStarHalfAlt } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { FaRegStar, FaStar, FaStarHalfAlt } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 const LargeCard = ({ chef }) => {
-	const { picture, name, rating, yearsOfExperience, recipes, id } = chef || {};
+	const { picture, name, rating, yearsOfExperience, recipes, _id } =
+		chef || {};
 	return (
 		<div className='bg-white h-full rounded p-5 md:p-0 flex flex-col md:flex-row md:justify-evenly items-center relative overflow-hidden'>
 			{/* Left side container */}
@@ -36,7 +37,7 @@ const LargeCard = ({ chef }) => {
 					<div className='flex justify-between items-center '>
 						<p>Recipes: {recipes?.length}</p>
 						<Link
-							to={`https://assignment-10-phr.netlify.app/dashboard/chefs/chef/${id}`}
+							to={`https://assignment-10-phr.netlify.app/dashboard/chefs/chef/${_id}`}
 							className='arrows flex justify-center items-center w-12 h-6 relative z-50'>
 							<span className='w-3 h-3 border-t-[3px] border-r-[3px] border-Primary rounded-tr-[2px] block transform rotate-45 hover'></span>
 							<span className='w-3 h-3 border-t-[3px] border-r-[3px] border-Primary rounded-tr-[2px] block transform rotate-45'></span>

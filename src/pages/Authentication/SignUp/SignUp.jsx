@@ -1,6 +1,6 @@
 import { FaGithub, FaEyeSlash, FaEye, FaFacebook } from 'react-icons/fa6';
 import { FcGoogle } from 'react-icons/fc';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import validatePassword from '../../../customHooks/validatePassword';
 import { useContext, useState } from 'react';
 import { AuthContext } from '../../../providers/authProvider/authProvider';
@@ -9,6 +9,7 @@ import showError from '../../../customHooks/showError';
 
 const SignUp = () => {
 	// ! Required variables
+	const navigate = useNavigate();
 	const [passwordType, setPasswordType] = useState(true);
 	const {
 		setUser,

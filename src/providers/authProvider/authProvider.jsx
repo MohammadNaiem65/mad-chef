@@ -44,17 +44,20 @@ const AuthProvider = ({ children }) => {
 		setShowLoader(true);
 		onAuthStateChanged(auth, (existedUser) => {
 			if (existedUser) {
-				const favorites = getFavoritesFromDB(existedUser.email);
-				const userData = {
-					name: existedUser.displayName,
-					email: existedUser.email,
-					favorites: favorites ? favorites : [],
-				};
-				setUser(userData);
-				setShowLoader(false);
-			} else {
-				setShowLoader(false);
+				getFavoritesFromDB(existedUser.email)
+					.then((favorites) => {
+						const userData = {
+							name: existedUser.displayName,
+							email: existedUser.email,
+							favorites: favorites,
+						};
+						setUser(userData);
+					})
+					.catch((error) => {
+						console.error(error);
+					});
 			}
+			setShowLoader(false);
 		});
 	}, []);
 

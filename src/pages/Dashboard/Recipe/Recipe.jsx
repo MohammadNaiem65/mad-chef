@@ -1,6 +1,4 @@
-import React from "react";
 import { FaRegStar, FaStar, FaStarHalfAlt } from "react-icons/fa";
-import { FcLike } from "react-icons/fc";
 import { Link, useLocation } from "react-router-dom";
 
 const Recipe = ({ recipe }) => {

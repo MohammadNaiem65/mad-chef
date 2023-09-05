@@ -1,9 +1,10 @@
-import { Link } from "react-router-dom";
-import { FaStar, FaStarHalfAlt, FaRegStar, FaHeart } from "react-icons/fa";
-import "./InvertedCard.css";
+import { Link } from 'react-router-dom';
+import { FaStar, FaStarHalfAlt, FaRegStar } from 'react-icons/fa';
+import './InvertedCard.css';
 
 const InvertedCard = ({ chef }) => {
-	const { picture, name, yearsOfExperience, recipes, rating, id } = chef;
+	const { picture, name, yearsOfExperience, availableRecipes, rating, _id } =
+		chef;
 	return (
 		<div className='h-full font-semibold bg-[#495579] flex flex-col justify-between rounded overflow-hidden'>
 			{/* Card upper half */}
@@ -32,9 +33,9 @@ const InvertedCard = ({ chef }) => {
 				<h3 className='text-lg text-black mt-2'>{name}</h3>
 				<p>Experience: {yearsOfExperience} Years</p>
 				<div className='flex justify-between items-center '>
-					<p>Recipes: {recipes.length}</p>
+					<p>Recipes: {availableRecipes.length}</p>
 					<Link
-						to={`https://assignment-10-phr.netlify.app/dashboard/chefs/chef/${id}`}
+						to={`https://assignment-10-phr.netlify.app/dashboard/chefs/chef/${_id}`}
 						className='arrows flex justify-center items-center w-12 h-6'>
 						<span className='w-3 h-3 border-t-[3px] border-r-[3px] border-Primary rounded-tr-[2px] block transform rotate-45 hover'></span>
 						<span className='w-3 h-3 border-t-[3px] border-r-[3px] border-Primary rounded-tr-[2px] block transform rotate-45'></span>
