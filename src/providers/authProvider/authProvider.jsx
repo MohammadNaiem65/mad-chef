@@ -8,10 +8,13 @@ import {
 	onAuthStateChanged,
 	signInWithEmailAndPassword,
 	signInWithPopup,
+	signOut,
 } from 'firebase/auth';
 import app from '../../firebase/firebase.config';
 import { ToastContainer } from 'react-toastify';
 import getFavoritesFromDB from '../../customHooks/getFavoritesFromDB';
+import showError from '../../customHooks/showError';
+import notify from '../../customHooks/notify';
 
 export const AuthContext = createContext({});
 
@@ -22,7 +25,7 @@ const AuthProvider = ({ children }) => {
 	const facebookProvider = new FacebookAuthProvider();
 	const githubProvider = new GithubAuthProvider();
 	const [user, setUser] = useState(null);
-	const [showLoader, setShowLoader] = useState(false);
+	const [showLoader, setShowLoader] = useState(true);
 
 	// ! Create user
 	const createUserWithEmail = (email, password) =>
@@ -39,6 +42,18 @@ const AuthProvider = ({ children }) => {
 	const logInUserWithEmail = (email, password) =>
 		signInWithEmailAndPassword(auth, email, password);
 
+	// ! Log out user
+	const logOutUser = () => {
+		setShowLoader(true)
+		signOut(auth)
+			.then(() => {
+				setShowLoader(false);
+				setUser(null);
+				notify('success', 'Logged out successfully!');
+			})
+			.catch((error) => showError(error));
+	};
+
 	// ! Get user data
 	useEffect(() => {
 		setShowLoader(true);
@@ -52,12 +67,15 @@ const AuthProvider = ({ children }) => {
 							favorites: favorites,
 						};
 						setUser(userData);
+						setShowLoader(false);
 					})
 					.catch((error) => {
-						console.error(error);
+						showError(error);
+						setShowLoader(false);
 					});
+			} else {
+				setShowLoader(false);
 			}
-			setShowLoader(false);
 		});
 	}, []);
 
@@ -72,6 +90,7 @@ const AuthProvider = ({ children }) => {
 		createUserWithFacebook,
 		createUserWithGithub,
 		logInUserWithEmail,
+		logOutUser,
 	};
 
 	return (

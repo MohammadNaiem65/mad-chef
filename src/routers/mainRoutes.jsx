@@ -11,6 +11,7 @@ import SignUp from '../pages/Authentication/SignUp/SignUp';
 import Login from '../pages/Authentication/Login/Login';
 import UserDashboard from '../pages/UserDashboard/UserDashboard';
 import Dashboard from '../pages/Dashboard/Dashboard';
+import PrivateRoute from './PrivateRoute/PrivateRoute';
 
 export const mainRoutes = createBrowserRouter([
 	{
@@ -62,7 +63,11 @@ export const mainRoutes = createBrowserRouter([
 			},
 			{
 				path: '/user-dashboard',
-				element: <UserDashboard />,
+				element: (
+					<PrivateRoute>
+						<UserDashboard />
+					</PrivateRoute>
+				),
 			},
 			{
 				path: '/consult',

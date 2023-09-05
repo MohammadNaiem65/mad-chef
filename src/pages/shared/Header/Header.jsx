@@ -1,12 +1,14 @@
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import logo from '../../../assets/logo.png';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { FaBars, FaTimes } from 'react-icons/fa';
 import HeaderActiveLink from '../HeaderActiveLink/HeaderActiveLink';
+import { AuthContext } from '../../../providers/authProvider/authProvider';
 
 const Header = () => {
-	// State status to show navigation bar.
+	// ! Required variables
+	const { user, logOutUser } = useContext(AuthContext);
 	const [navOptionsStatus, setNavOptionsStatus] = useState(false);
 
 	const containerVariant = {
@@ -48,6 +50,11 @@ const Header = () => {
 		},
 	};
 
+	// ! Log out user
+	const handleLogOutUser = () => {
+		logOutUser();
+	};
+
 	return (
 		<>
 			<div className='flex justify-between items-center px-12 relative'>
@@ -58,6 +65,8 @@ const Header = () => {
 						className='w-32 md:w-48 relative z-[100]'
 					/>
 				</Link>
+
+				{/* Hamburger menu */}
 				<p className='text-xl block md:hidden absolute right-14 duration-300 cursor-pointer z-[100]'>
 					{navOptionsStatus ? (
 						<FaTimes
@@ -76,7 +85,7 @@ const Header = () => {
 
 				{/* Large device navbar */}
 				<div
-					className={`hidden font-semibold font-Vollokorn text-lg md:flex gap-x-6`}>
+					className={`hidden font-semibold font-Vollokorn text-lg md:flex items-center gap-x-6`}>
 					<HeaderActiveLink to='/'>Home</HeaderActiveLink>
 					<HeaderActiveLink to='/dashboard'>
 						Dashboard
@@ -86,15 +95,25 @@ const Header = () => {
 					</HeaderActiveLink>
 					<HeaderActiveLink to='/consult'>Consult</HeaderActiveLink>
 					<HeaderActiveLink to='/blog'>Blog</HeaderActiveLink>
-					<p className='flex'>
-						<HeaderActiveLink to='login' className='link-hover'>
-							Login
-						</HeaderActiveLink>
-						/
-						<HeaderActiveLink to='/sign-up' className='link-hover'>
-							Sign In
-						</HeaderActiveLink>
-					</p>
+					{user ? (
+						<button
+							className='btn btn-primary'
+							onClick={handleLogOutUser}>
+							Sign Out
+						</button>
+					) : (
+						<p className='flex'>
+							<HeaderActiveLink to='login' className='link-hover'>
+								Login
+							</HeaderActiveLink>
+							/
+							<HeaderActiveLink
+								to='/sign-up'
+								className='link-hover'>
+								Sign In
+							</HeaderActiveLink>
+						</p>
+					)}
 				</div>
 
 				{/* Small device navbar */}
@@ -122,8 +141,13 @@ const Header = () => {
 									</HeaderActiveLink>
 								</p>
 								<p className='overflow-hidden mt-3'>
-									<HeaderActiveLink to='/favorites'>
-										Favorites
+									<HeaderActiveLink to='/user-dashboard'>
+										User Dashboard
+									</HeaderActiveLink>
+								</p>
+								<p className='overflow-hidden mt-3'>
+									<HeaderActiveLink to='/consult'>
+										Consult
 									</HeaderActiveLink>
 								</p>
 								<p className='overflow-hidden mt-3'>
@@ -131,20 +155,30 @@ const Header = () => {
 										Blog
 									</HeaderActiveLink>
 								</p>
-								<p className='overflow-hidden mt-3'>
-									<HeaderActiveLink
-										to='login'
-										className='link-hover'>
-										Login
-									</HeaderActiveLink>
-								</p>
-								<p className='overflow-hidden mt-3'>
-									<HeaderActiveLink
-										to='/sign-up'
-										className='link-hover'>
-										Sign In
-									</HeaderActiveLink>
-								</p>
+								{user ? (
+									<button
+										className='btn btn-primary'
+										onClick={handleLogOutUser}>
+										Sign Out
+									</button>
+								) : (
+									<>
+										<p className='overflow-hidden mt-3'>
+											<HeaderActiveLink
+												to='login'
+												className='link-hover'>
+												Login
+											</HeaderActiveLink>
+										</p>
+										<p className='overflow-hidden mt-3'>
+											<HeaderActiveLink
+												to='/sign-up'
+												className='link-hover'>
+												Sign In
+											</HeaderActiveLink>
+										</p>
+									</>
+								)}
 							</motion.div>
 						</motion.div>
 					)}
