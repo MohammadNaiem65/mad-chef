@@ -23,22 +23,32 @@ const RecipeDetails = () => {
 	const { picture, name, rating, ingredients, method, _id } = recipe;
 
 	const addToFav = () => {
-		fetch(`http://localhost:5000/users/user/favorites/${_id}?email=${user.email}`, {
-			method: 'PATCH',
-		})
-			.then((res) => res.json())
-			.then((data) => {
-				if (data.modifiedCount === 1) {
-					notify('success', 'Added to Favorite list.');
-				} else if (
-					data.matchedCount === 1 &&
-					data.modifiedCount === 0
-				) {
-					notify('info', 'Recipe already exist in the favorite ');
+		if (user) {
+			fetch(
+				`http://localhost:5000/users/user/favorites/${_id}?email=${user.email}`,
+				{
+					method: 'PATCH',
 				}
-			});
+			)
+				.then((res) => res.json())
+				.then((data) => {
+					if (data.modifiedCount === 1) {
+						notify('success', 'Added to Favorite list.');
+					} else if (
+						data.matchedCount === 1 &&
+						data.modifiedCount === 0
+					) {
+						notify(
+							'info',
+							'Recipe already exist in the Favorite list.'
+						);
+					}
+				});
 
-		setIsAddedToFav(true);
+			setIsAddedToFav(true);
+		} else {
+			notify('info', 'Please log in to add item to Favorite list.');
+		}
 	};
 
 	return (
