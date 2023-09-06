@@ -72,6 +72,7 @@ export const mainRoutes = createBrowserRouter([
 			{
 				path: '/consult',
 				element: <Consult />,
+				loader: () => fetch('http://localhost:5000/chefs/name'),
 			},
 			{
 				path: '/blog',

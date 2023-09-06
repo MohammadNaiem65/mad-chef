@@ -36,14 +36,11 @@ const SignUp = () => {
 		} else {
 			createUserWithEmail(email, password)
 				.then((userData) => {
-					const newUser = {
-						email: userData.user.email,
-						favorites: [],
-					};
 					postUserDataToDB(
-						newUser,
+						userData.user.email,
 						userData.user.displayName,
-						setUser
+						setUser,
+						navigate
 					);
 				})
 				.catch((err) => {
@@ -56,12 +53,12 @@ const SignUp = () => {
 	const handleSignUpWithGoogle = () => {
 		createUserWithGoogle()
 			.then((userData) => {
-				const newUser = {
-					email: userData.user.email,
-					favorites: [],
-				};
-
-				postUserDataToDB(newUser, userData.user.displayName, setUser);
+				postUserDataToDB(
+					userData.user.email,
+					userData.user.displayName,
+					setUser,
+					navigate
+				);
 			})
 			.catch((err) => {
 				showError(err);
@@ -72,11 +69,12 @@ const SignUp = () => {
 	const handleSignUpWithFacebook = () => {
 		createUserWithFacebook()
 			.then((userData) => {
-				const newUser = {
-					email: userData.user.email,
-					favorites: [],
-				};
-				postUserDataToDB(newUser, userData.user.displayName, setUser);
+				postUserDataToDB(
+					userData.user.email,
+					userData.user.displayName,
+					setUser,
+					navigate
+				);
 			})
 			.catch((err) => {
 				showError(err);
@@ -87,11 +85,12 @@ const SignUp = () => {
 	const handleSignUpWithGithub = () => {
 		createUserWithGithub()
 			.then((userData) => {
-				const newUser = {
-					email: userData.user.email,
-					favorites: [],
-				};
-				postUserDataToDB(newUser, userData.user.displayName, setUser);
+				postUserDataToDB(
+					userData.user.email,
+					userData.user.displayName,
+					setUser,
+					navigate
+				);
 			})
 			.catch((err) => {
 				showError(err);

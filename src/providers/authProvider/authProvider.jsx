@@ -44,7 +44,7 @@ const AuthProvider = ({ children }) => {
 
 	// ! Log out user
 	const logOutUser = () => {
-		setShowLoader(true)
+		setShowLoader(true);
 		signOut(auth)
 			.then(() => {
 				setShowLoader(false);
@@ -64,6 +64,7 @@ const AuthProvider = ({ children }) => {
 						const userData = {
 							name: existedUser.displayName,
 							email: existedUser.email,
+							photo: existedUser.photoURL,
 							favorites: favorites,
 						};
 						setUser(userData);

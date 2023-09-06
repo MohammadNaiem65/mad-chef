@@ -2,6 +2,7 @@ import DashboardNavigationBar from './DashboardNavigationBar/DashboardNavigation
 import { Outlet, useLoaderData } from 'react-router-dom';
 
 const Dashboard = () => {
+	// ! Required variables
 	const chefs = useLoaderData();
 
 	return (
