@@ -5,7 +5,7 @@ export default function Banner({ user, consult }) {
 	const { photo, name, email, favorites } = user;
 
 	return (
-		<div className='w-3/5 mx-auto mt-5 px-16 py-6 bg-Primary/60 text-black/70 font-Popins flex gap-x-5 rounded'>
+		<div className='w-3/5 mx-auto mt-20 px-16 py-6 bg-Primary/80 text-black/70 font-Popins flex gap-x-5 rounded'>
 			<img
 				className='h-52 aspect-square rounded-full object-cover'
 				src={photo ? photo : avatarImg}

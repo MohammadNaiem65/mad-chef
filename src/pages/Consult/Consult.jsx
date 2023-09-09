@@ -1,4 +1,4 @@
-import { useContext, useRef } from 'react';
+import { useContext } from 'react';
 import { AuthContext } from '../../providers/authProvider/authProvider';
 import notify from '../../customHooks/notify';
 import emailjs from '@emailjs/browser';
@@ -7,7 +7,6 @@ import axios from 'axios';
 const Consult = () => {
 	// ! Required variables
 	const { user } = useContext(AuthContext);
-	const formRef = useRef();
 
 	// ! Consult submission
 	const handleConsultSubmission = (e) => {
@@ -57,8 +56,7 @@ const Consult = () => {
 		<div className='min-h-[calc(100vh-26.95rem)] mt-10'>
 			<form
 				className='w-3/5 mx-auto p-10 bg-Primary/20 text-gray-500 font-Popins rounded'
-				onSubmit={handleConsultSubmission}
-				ref={formRef}>
+				onSubmit={handleConsultSubmission}>
 				<h1 className='text-center text-3xl font-semibold'>Consult</h1>
 				<div className='w-3/4 mx-auto mt-10 flex flex-col items-center'>
 					{/* Name */}

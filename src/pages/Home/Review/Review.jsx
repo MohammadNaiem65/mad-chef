@@ -38,9 +38,11 @@ const Review = () => {
 						nextEl: '.swiper-button-next',
 					}}
 					modules={[Pagination, Navigation]}>
+					{/* Controls */}
 					<FaArrowLeft className='swiper-button-prev w-12 h-12 p-2 bg-Primary/30 text-indigo-300 rounded-full after:hidden' />
-					<FaArrowRight className='swiper-button-next bg-Primary/30 text-indigo-300 w-12 h-12 p-2 rounded-full after:hidden' />
+					<FaArrowRight className='swiper-button-next w-12 h-12 p-2 bg-Primary/30 text-indigo-300 rounded-full after:hidden' />
 
+					{/* Slides */}
 					{reviewsData?.map((review) => (
 						<SwiperSlide className='swiper-slide' key={review.id}>
 							<ReviewSlide review={review} />

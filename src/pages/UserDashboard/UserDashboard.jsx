@@ -24,10 +24,7 @@ const UserDashboard = () => {
 			{/* Banner */}
 			<Banner user={user} consult={consults?.length} />
 
-			<Consults />
-
-			{/* Gradient background */}
-			<div className='top-16 -bottom-16 left-0 right-0 absolute -z-10 bg-gradient-to-b from-transparent from-0% via-Primary/60 via-30% to-Primary/60 to-100%'></div>
+			<Consults consults={consults} />
 		</div>
 	);
 };
