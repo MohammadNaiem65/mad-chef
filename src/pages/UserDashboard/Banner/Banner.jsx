@@ -1,8 +1,8 @@
 import avatarImg from '../../../assets/man-avatar.png';
 
-export default function Banner({ user }) {
+export default function Banner({ user, consult }) {
 	// ! Required variables
-	const { photo, name, email, favorites, consult } = user;
+	const { photo, name, email, favorites } = user;
 
 	return (
 		<div className='w-3/5 mx-auto mt-5 px-16 py-6 bg-Primary/60 text-black/70 font-Popins flex gap-x-5 rounded'>
@@ -21,22 +21,26 @@ export default function Banner({ user }) {
 				</p>
 				<div className='text-lg flex items-center justify-between'>
 					<p className='flex items-center'>
-						<span className='text-black/80'>Favorites:</span>{' '}
-						{favorites?.length === 0
-							? ' 00'
-							: favorites?.length < 10
-							? ` 0${favorites.length}`
-							: ` ${favorites.length}`}
+						<span className='text-black/80'>
+							Favorites:{' '}
+							{favorites?.length === 0
+								? ' 00'
+								: favorites?.length < 10
+								? ` 0${favorites.length}`
+								: ` ${favorites.length}`}
+						</span>
 					</p>
 					<p
 						className='justify-self-start flex items-center'
 						title='Consults'>
-						<span className='text-black/80'>Consult:</span>{' '}
-						{consult?.length === 0
-							? ' 00'
-							: favorites?.length < 10
-							? ` 0${favorites.length}`
-							: ` ${favorites.length}`}
+						<span className='text-black/80'>
+							Consult:{' '}
+							{consult === 0
+								? ' 00'
+								: consult < 10
+								? ` 0${consult}`
+								: ` ${consult}`}
+						</span>
 					</p>
 				</div>
 			</div>

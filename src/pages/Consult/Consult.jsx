@@ -1,10 +1,13 @@
-import { useContext } from 'react';
+import { useContext, useRef } from 'react';
 import { AuthContext } from '../../providers/authProvider/authProvider';
 import notify from '../../customHooks/notify';
+import emailjs from '@emailjs/browser';
+import axios from 'axios';
 
 const Consult = () => {
 	// ! Required variables
 	const { user } = useContext(AuthContext);
+	const formRef = useRef();
 
 	// ! Consult submission
 	const handleConsultSubmission = (e) => {
@@ -23,20 +26,30 @@ const Consult = () => {
 			time,
 		};
 
-		fetch('http://localhost:5000/consult', {
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json',
-			},
-			body: JSON.stringify(consultDetails),
-		})
-			.then((res) => res.json())
+		axios
+			.post('http://localhost:5000/consult', { ...consultDetails })
 			.then((data) => {
-				if (data.insertedId) {
-					notify('success', 'Submitted successfully.');
+				if (data.data.insertedId) {
+					// ? TODO: Import your EmailJs ServiceId, TemplateId, PublicKey
+					emailjs
+						.send(
+							import.meta.env.VITE_serviceId,
+							import.meta.env.VITE_templateId,
+							consultDetails,
+							import.meta.env.VITE_publicKey
+						)
+						.then(() => {
+							notify('success', 'Submitted successfully.'),
+								() => {
+									notify('error', 'Something went wrong!');
+								};
+						});
 				} else {
 					notify('error', 'Something gone wrong!');
 				}
+			})
+			.catch((error) => {
+				console.log(error);
 			});
 	};
 
@@ -44,9 +57,9 @@ const Consult = () => {
 		<div className='min-h-[calc(100vh-26.95rem)] mt-10'>
 			<form
 				className='w-3/5 mx-auto p-10 bg-Primary/20 text-gray-500 font-Popins rounded'
-				onSubmit={handleConsultSubmission}>
+				onSubmit={handleConsultSubmission}
+				ref={formRef}>
 				<h1 className='text-center text-3xl font-semibold'>Consult</h1>
-				{/* Email */}
 				<div className='w-3/4 mx-auto mt-10 flex flex-col items-center'>
 					{/* Name */}
 					<div>
