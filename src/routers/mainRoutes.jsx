@@ -12,6 +12,7 @@ import Login from '../pages/Authentication/Login/Login';
 import UserDashboard from '../pages/UserDashboard/UserDashboard';
 import Dashboard from '../pages/Dashboard/Dashboard';
 import PrivateRoute from './PrivateRoute/PrivateRoute';
+import axiosCustomInstance from '../axios/axiosCustomInstance';
 
 export const mainRoutes = createBrowserRouter([
 	{
@@ -22,7 +23,7 @@ export const mainRoutes = createBrowserRouter([
 			{
 				path: '/',
 				element: <Home />,
-				loader: () => fetch('http://localhost:5000/reviews'),
+				loader: () => axiosCustomInstance.get('/reviews'),
 			},
 			{
 				path: '/dashboard',

@@ -23,11 +23,11 @@ const LargeCard = ({ chef }) => {
 						{rating &&
 							Array.from({ length: 5 }, (_, i) => {
 								return rating >= i + 1 ? (
-									<FaStar />
+									<FaStar key={i} />
 								) : rating >= i + 0.5 ? (
-									<FaStarHalfAlt />
+									<FaStarHalfAlt key={i} />
 								) : (
-									<FaRegStar />
+									<FaRegStar key={i} />
 								);
 							})}
 					</p>

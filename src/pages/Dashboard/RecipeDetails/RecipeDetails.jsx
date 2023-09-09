@@ -12,6 +12,7 @@ import {
 } from 'react-icons/fa6';
 import notify from '../../../customHooks/notify';
 import { AuthContext } from '../../../providers/authProvider/authProvider';
+import axiosCustomInstance from '../../../axios/axiosCustomInstance';
 
 const RecipeDetails = () => {
 	// ! Required variables
@@ -24,14 +25,10 @@ const RecipeDetails = () => {
 
 	const addToFav = () => {
 		if (user) {
-			fetch(
-				`http://localhost:5000/users/user/favorites/${_id}?email=${user.email}`,
-				{
-					method: 'PATCH',
-				}
-			)
-				.then((res) => res.json())
-				.then((data) => {
+			axiosCustomInstance
+				.patch(`/users/user/favorites/${_id}?email=${user.email}`)
+				.then((res) => {
+					const data = res.data;
 					if (data.modifiedCount === 1) {
 						notify('success', 'Added to Favorite list.');
 					} else if (

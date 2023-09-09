@@ -10,9 +10,9 @@ export default function Consults({ consults }) {
 	return (
 		<div className='w-4/5 mx-auto mt-20'>
 			<h3 className='w-1/4 text-2xl font-semibold text-black/80 border-b-2 border-Primary px-2'>
-				Consult:
+				Consults:
 			</h3>
-			<div className='h-[26.5rem] mt-6 px-10'>
+			<div className='h-[27rem] mt-6 px-10'>
 				<Swiper
 				className='h-full pt-4'
 					slidesPerView={3}

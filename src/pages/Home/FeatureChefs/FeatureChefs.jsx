@@ -1,14 +1,13 @@
 import { useEffect, useRef, useState } from 'react';
 import InvertedCard from '../InvertedCard/InvertedCard';
 import LargeCard from '../LargeCard/LargeCard';
+import axiosCustomInstance from '../../../axios/axiosCustomInstance';
 
 const FeatureChefs = () => {
 	const [chefs, setChefs] = useState([]);
 
 	useEffect(() => {
-		fetch('http://localhost:5000/top-chefs')
-			.then((res) => res.json())
-			.then((result) => setChefs(result));
+		axiosCustomInstance.get('/top-chefs').then((res) => setChefs(res.data));
 	}, []);
 
 	// Ref definitions
@@ -101,7 +100,7 @@ const FeatureChefs = () => {
 						<div ref={upperCardsRef} className='md:flex gap-2'>
 							{chefs.toSpliced(2, 6).map((chef) => (
 								<div
-									key={chef.id}
+									key={chef._id}
 									className={`w-full md:w-1/2 h-[22.5rem] mb-5 md:mb-0 duration-500 ${
 										upperCardsVisibility
 											? 'opacity-100 translate-y-0'
@@ -120,7 +119,7 @@ const FeatureChefs = () => {
 									? 'opacity-100 translate-y-0'
 									: 'opacity-0 translate-y-7'
 							}`}>
-							<LargeCard chef={chefs[2]} />
+							<LargeCard chef={chefs[2]} key={1} />
 						</div>
 					</div>
 
@@ -134,7 +133,7 @@ const FeatureChefs = () => {
 									? 'opacity-100 translate-y-0'
 									: 'opacity-0 translate-y-7'
 							}`}>
-							<LargeCard chef={chefs[3]} />
+							<LargeCard chef={chefs[3]} key={2} />
 						</div>
 
 						{/* Lower cards */}
@@ -143,7 +142,7 @@ const FeatureChefs = () => {
 							className='mt-5 md:mt-2 md:flex gap-2'>
 							{chefs.slice(-2).map((chef) => (
 								<div
-									key={chef.id}
+									key={chef._id}
 									className={`md:w-1/2 h-[22.5rem] duration-500 ${
 										lowerCardsVisibility
 											? 'opacity-100 translate-y-0'

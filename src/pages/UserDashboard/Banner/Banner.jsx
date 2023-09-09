@@ -27,7 +27,7 @@ export default function Banner({ user, consult }) {
 								? ' 00'
 								: favorites?.length < 10
 								? ` 0${favorites.length}`
-								: ` ${favorites.length}`}
+								: ` ${favorites?.length}`}
 						</span>
 					</p>
 					<p

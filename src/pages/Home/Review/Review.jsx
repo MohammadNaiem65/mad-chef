@@ -43,7 +43,7 @@ const Review = () => {
 					<FaArrowRight className='swiper-button-next w-12 h-12 p-2 bg-Primary/30 text-indigo-300 rounded-full after:hidden' />
 
 					{/* Slides */}
-					{reviewsData?.map((review) => (
+					{reviewsData?.data?.map((review) => (
 						<SwiperSlide className='swiper-slide' key={review.id}>
 							<ReviewSlide review={review} />
 						</SwiperSlide>

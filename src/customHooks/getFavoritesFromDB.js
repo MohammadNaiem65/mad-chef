@@ -1,7 +1,9 @@
+import axiosCustomInstance from '../axios/axiosCustomInstance';
+
 export default function getFavoritesFromDB(email) {
-	return fetch(`http://localhost:5000/users/user/favorites?email=${email}`)
-		.then((res) => res.json())
-		.then((data) => {
-			return data.favorites;
+	return axiosCustomInstance
+		.get(`/users/user/favorites?email=${email}`)
+		.then((res) => {
+			return res.data.favorites;
 		});
 }

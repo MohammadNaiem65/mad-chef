@@ -1,8 +1,8 @@
 import { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../providers/authProvider/authProvider';
+import axiosCustomInstance from '../../axios/axiosCustomInstance';
 import Consults from './Consults/Consults';
 import Banner from './Banner/Banner';
-import axios from 'axios';
 
 const UserDashboard = () => {
 	// ! Required variables
@@ -11,8 +11,8 @@ const UserDashboard = () => {
 
 	useEffect(() => {
 		const unsub = () => {
-			axios
-				.get(`http://localhost:5000/consult?email=${user.email}`)
+			axiosCustomInstance
+				.get(`/consult?email=${user.email}`)
 				.then((res) => setConsults(res.data));
 		};
 

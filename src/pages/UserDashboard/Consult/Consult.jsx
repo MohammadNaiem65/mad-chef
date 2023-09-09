@@ -1,8 +1,21 @@
 import { motion } from 'framer-motion';
+import notify from '../../../customHooks/notify';
+import axiosCustomInstance from '../../../axios/axiosCustomInstance';
 
 export default function Consult({ consult }) {
 	// ! Required variables
-	const { date, time } = consult;
+	const { _id, date, time } = consult;
+
+	// * Handle consult deletion
+	const handleDeleteConsult = () => {
+		axiosCustomInstance.delete(`/consult?id=${_id}`).then((res) => {
+			if (res.data.deletedCount) {
+				notify('success', 'Successfully removed the consult request.');
+			} else {
+				notify('error', 'Something went wrong!');
+			}
+		});
+	};
 
 	return (
 		<div className='w-fit mx-auto cursor-pointer'>
@@ -40,7 +53,9 @@ export default function Consult({ consult }) {
 					</motion.span>
 					<p className='text-xl'>Date: {date}</p>
 				</div>
-				<button className='absolute bottom-4 left-4 right-4 z-20 rounded border-2 border-white bg-white py-2 text-center font-mono font-black uppercase text-neutral-800 backdrop-blur transition-colors hover:bg-white/30 hover:text-white'>
+				<button
+					className='absolute bottom-4 left-4 right-4 z-20 rounded border-2 border-white bg-white py-2 text-center font-mono font-black uppercase text-neutral-800 backdrop-blur transition-colors hover:bg-white/30 hover:text-white'
+					onClick={handleDeleteConsult}>
 					Delete
 				</button>
 				<motion.svg

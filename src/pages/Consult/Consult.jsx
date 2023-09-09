@@ -1,8 +1,8 @@
 import { useContext } from 'react';
 import { AuthContext } from '../../providers/authProvider/authProvider';
+import axiosCustomInstance from '../../axios/axiosCustomInstance';
 import notify from '../../customHooks/notify';
 import emailjs from '@emailjs/browser';
-import axios from 'axios';
 
 const Consult = () => {
 	// ! Required variables
@@ -25,8 +25,8 @@ const Consult = () => {
 			time,
 		};
 
-		axios
-			.post('http://localhost:5000/consult', { ...consultDetails })
+		axiosCustomInstance
+			.post('/consult', { ...consultDetails })
 			.then((data) => {
 				if (data.data.insertedId) {
 					// ? TODO: Import your EmailJs ServiceId, TemplateId, PublicKey
