@@ -1,53 +1,16 @@
-import { useEffect, useRef, useState } from "react";
-import ReviewSlide from "../ReviewSlide/ReviewSlide";
-import { FaArrowLeft, FaArrowRight } from "react-icons/fa6";
-import Swiper, { Navigation, Pagination, Autoplay } from "swiper";
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
-import "swiper/css/autoplay";
-import "swiper/css/keyboard";
-import "./Review.css";
-import { useLoaderData } from "react-router-dom";
-
-Swiper.use([Navigation, Pagination, Autoplay]);
+import { useLoaderData } from 'react-router-dom';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Pagination, Navigation } from 'swiper/modules';
+import ReviewSlide from '../ReviewSlide/ReviewSlide';
+import { FaArrowLeft, FaArrowRight } from 'react-icons/fa6';
+import 'swiper/css';
+import 'swiper/css/pagination';
+import 'swiper/css/navigation';
+import './Review.css';
 
 const Review = () => {
 	// reviews
 	const reviewsData = useLoaderData();
-
-	// Swiper states
-	const swiperRef = useRef(null);
-	const [swiper, setSwiper] = useState(null);
-
-	useEffect(() => {
-		setTimeout(() => {
-			const mySwiper = new Swiper(swiperRef.current, {
-				// Optional parameters
-				slidesPerView: 1,
-				spaceBetween: 2,
-				loop: true,
-				speed: 250,
-				autoplay: {
-					delay: 3000,
-				},
-				pagination: {
-					el: ".swiper-pagination",
-					dynamicBullets: true,
-				},
-				breakpoints: {
-					// when window width is >= 426px
-					426: {
-						slidesPerView: 2,
-					},
-				},
-
-				modules: [Navigation, Pagination, Autoplay],
-			});
-
-			setSwiper(mySwiper);
-		}, 0);
-	}, []);
 
 	return (
 		<div className='container'>
@@ -60,29 +23,30 @@ const Review = () => {
 				of Us
 			</h2>
 			{/* Swiper container */}
-			<div
-				className='w-full md:w-4/5 h-96 mx-auto mt-5 relative overflow-hidden swiper'
-				ref={swiperRef}>
-				<div className='swiper-wrapper'>
+			<div className='w-full md:w-4/5 h-96 mx-auto mt-5 relative overflow-hidden rounded'>
+				<Swiper
+					className='swiper-wrapper'
+					slidesPerView={2}
+					grabCursor={true}
+					loop={true}
+					pagination={{
+						dynamicBullets: true,
+						clickable: true,
+					}}
+					navigation={{
+						prevEl: '.swiper-button-prev',
+						nextEl: '.swiper-button-next',
+					}}
+					modules={[Pagination, Navigation]}>
+					<FaArrowLeft className='swiper-button-prev w-12 h-12 p-2 bg-Primary/30 text-indigo-300 rounded-full after:hidden' />
+					<FaArrowRight className='swiper-button-next bg-Primary/30 text-indigo-300 w-12 h-12 p-2 rounded-full after:hidden' />
+
 					{reviewsData?.map((review) => (
-						<div className='swiper-slide' key={review.id}>
+						<SwiperSlide className='swiper-slide' key={review.id}>
 							<ReviewSlide review={review} />
-						</div>
+						</SwiperSlide>
 					))}
-				</div>
-
-				{/* Pagination */}
-				<div className='swiper-pagination'></div>
-
-				{/* Slider Control */}
-				<>
-					<div onClick={() => swiper && swiper.slidePrev()}>
-						<FaArrowLeft className='w-7 h-7 md:w-14 md:h-14 p-1 md:p-3 md:text-2xl text-Primary bg-Primary/20 hover:bg-Primary/50  absolute top-1/2 left-5 transform -translate-y-1/2 rounded-full cursor-pointer z-10' />
-					</div>
-					<div onClick={() => swiper && swiper.slideNext()}>
-						<FaArrowRight className='w-7 h-7 md:w-14  md:h-14 p-1 md:p-3 text-2xl text-Primary bg-Primary/20 hover:bg-Primary/50  absolute top-1/2 right-5 transform -translate-y-1/2 rounded-full cursor-pointer z-10' />
-					</div>
-				</>
+				</Swiper>
 			</div>
 		</div>
 	);
