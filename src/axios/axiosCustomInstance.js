@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const axiosCustomInstance = axios.create({
-	baseURL: 'http://localhost:5000',
+	baseURL: 'https://mad-chef-server.vercel.app',
 	headers: {
 		Accept: 'application/json',
 		'Content-Type': 'application/json',

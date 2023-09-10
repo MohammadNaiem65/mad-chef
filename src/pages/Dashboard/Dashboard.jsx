@@ -7,7 +7,7 @@ const Dashboard = () => {
 
 	return (
 		<div className='container min-h-fit grid grid-cols-3 gap-x-6'>
-			<DashboardNavigationBar chefs={chefs} />
+			<DashboardNavigationBar chefs={chefs.data} />
 			<div className='col-span-2'>
 				<Outlet />
 			</div>

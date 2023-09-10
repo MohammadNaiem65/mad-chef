@@ -28,7 +28,7 @@ export const mainRoutes = createBrowserRouter([
 			{
 				path: '/dashboard',
 				element: <Dashboard />,
-				loader: () => fetch('http://localhost:5000/chefs/name'),
+				loader: () => axiosCustomInstance.get('/chefs/name'),
 				children: [
 					{
 						path: '/dashboard',
@@ -42,16 +42,14 @@ export const mainRoutes = createBrowserRouter([
 						path: '/dashboard/chefs/chef/:id',
 						element: <Chef />,
 						loader: ({ params }) =>
-							fetch(
-								`http://localhost:5000/chefs/chef/${params.id}`
-							),
+							axiosCustomInstance.get(`/chefs/chef/${params.id}`),
 						children: [
 							{
 								path: '/dashboard/chefs/chef/:id',
 								element: <Recipes />,
 								loader: ({ params }) =>
-									fetch(
-										`http://localhost:5000/chefs/chef/recipes/${params.id}`
+									axiosCustomInstance.get(
+										`/chefs/chef/recipes/${params.id}`
 									),
 							},
 							{

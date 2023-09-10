@@ -8,7 +8,7 @@ const Recipes = () => {
 	return (
 		<>
 			<h3 className='font-semibold font-Vollokorn text-lg'>Recipes:</h3>
-			{recipes.map((recipe) => (
+			{recipes.data.map((recipe) => (
 				<Recipe key={recipe._id} recipe={recipe} />
 			))}
 		</>

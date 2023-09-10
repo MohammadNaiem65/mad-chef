@@ -11,7 +11,7 @@ const Chef = () => {
 		rating,
 		yearsOfExperience,
 		availableRecipes,
-	} = chef;
+	} = chef.data;
 	return (
 		<div>
 			{/* Chef banner start */}

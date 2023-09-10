@@ -3,6 +3,7 @@ import { AuthContext } from '../../providers/authProvider/authProvider';
 import axiosCustomInstance from '../../axios/axiosCustomInstance';
 import Consults from './Consults/Consults';
 import Banner from './Banner/Banner';
+import Favorites from './Favorites/Favorites';
 
 const UserDashboard = () => {
 	// ! Required variables
@@ -25,6 +26,7 @@ const UserDashboard = () => {
 			<Banner user={user} consult={consults?.length} />
 
 			<Consults consults={consults} />
+			<Favorites favorites={user.favorites} />
 		</div>
 	);
 };
