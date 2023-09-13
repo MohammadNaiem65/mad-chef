@@ -4,6 +4,7 @@ import axiosCustomInstance from '../../axios/axiosCustomInstance';
 import Consults from './Consults/Consults';
 import Banner from './Banner/Banner';
 import Favorites from './Favorites/Favorites';
+import { Helmet } from 'react-helmet';
 
 const UserDashboard = () => {
 	// ! Required variables
@@ -22,6 +23,11 @@ const UserDashboard = () => {
 
 	return (
 		<div className='min-h-[calc(100vh-26.95rem)] relative'>
+			{/* Set title */}
+			<Helmet>
+				<title>User Dashboard || Mad Chef</title>
+			</Helmet>
+			
 			{/* Banner */}
 			<Banner user={user} consult={consults?.length} />
 

@@ -3,6 +3,7 @@ import { AuthContext } from '../../providers/authProvider/authProvider';
 import axiosCustomInstance from '../../axios/axiosCustomInstance';
 import notify from '../../customHooks/notify';
 import emailjs from '@emailjs/browser';
+import { Helmet } from 'react-helmet';
 
 const Consult = () => {
 	// ! Required variables
@@ -54,6 +55,10 @@ const Consult = () => {
 
 	return (
 		<div className='min-h-[calc(100vh-26.95rem)] mt-10'>
+			{/* Set title */}
+			<Helmet>
+				<title>Consult || Mad Chef</title>
+			</Helmet>
 			<form
 				className='w-3/5 mx-auto p-10 bg-Primary/20 text-gray-500 font-Popins rounded'
 				onSubmit={handleConsultSubmission}>

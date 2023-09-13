@@ -6,6 +6,7 @@ import { AuthContext } from '../../../providers/authProvider/authProvider';
 import notify from '../../../customHooks/notify';
 import showError from '../../../customHooks/showError';
 import getFavoritesFromDB from '../../../customHooks/getFavoritesFromDB';
+import { Helmet } from 'react-helmet';
 
 const Login = () => {
 	// ! Required variables
@@ -118,6 +119,10 @@ const Login = () => {
 
 	return (
 		<div className='w-1/3 mx-auto my-20 px-10 pt-14 pb-8 bg-Primary/60 font-Popins rounded'>
+			{/* Set title */}
+			<Helmet>
+				<title>Login || Mad Chef</title>
+			</Helmet>
 			<h2 className='text-4xl text-center font-Vollokorn mb-8'>Login</h2>
 			<form
 				className='w-fit mx-auto px-5'

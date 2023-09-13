@@ -29,7 +29,7 @@ export default function Favorites({ favorites }) {
 			<h3 className='w-1/4 text-2xl font-semibold text-black/80 border-b-2 border-Primary px-2'>
 				Consults:
 			</h3>
-			<div className='ml-10 mt-5'>
+			<div className='mt-5 ml-5 grid grid-cols-2 gap-5'>
 				{recipes.map((recipe) => (
 					<Recipe key={recipe._id} recipe={recipe} />
 				))}

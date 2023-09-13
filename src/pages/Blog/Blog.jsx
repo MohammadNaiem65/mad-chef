@@ -1,4 +1,5 @@
 import { motion, useMotionValue, useMotionValueEvent } from 'framer-motion';
+import { Helmet } from 'react-helmet';
 
 const Blog = () => {
 	const x = useMotionValue(0);
@@ -12,7 +13,12 @@ const Blog = () => {
 	});
 
 	return (
-		<motion.div className='min-h-[calc(100vh-26.95rem)]'>blog</motion.div>
+		<motion.div className='min-h-[calc(100vh-26.95rem)]'>
+			{/* Set title */}
+			<Helmet>
+				<title>Blog || Mad Chef</title>
+			</Helmet>
+		</motion.div>
 	);
 };
 

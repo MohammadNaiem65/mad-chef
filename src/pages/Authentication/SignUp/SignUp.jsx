@@ -6,6 +6,7 @@ import { useContext, useState } from 'react';
 import { AuthContext } from '../../../providers/authProvider/authProvider';
 import postUserDataToDB from '../../../customHooks/postUserDataToDB';
 import showError from '../../../customHooks/showError';
+import { Helmet } from 'react-helmet';
 
 const SignUp = () => {
 	// ! Required variables
@@ -99,6 +100,10 @@ const SignUp = () => {
 
 	return (
 		<div className='w-1/3 mx-auto my-14 px-10 py-8 bg-Primary/60 font-Popins rounded'>
+			{/* Set title */}
+			<Helmet>
+				<title>Sign Up || Mad Chef</title>
+			</Helmet>
 			<h2 className='text-4xl text-center font-Vollokorn mb-8'>
 				Sign Up
 			</h2>
