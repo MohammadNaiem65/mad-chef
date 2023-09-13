@@ -8,7 +8,7 @@ import 'swiper/css/navigation';
 
 export default function Consults({ consults }) {
 	return (
-		<div className='w-4/5 mx-auto mt-20'>
+		<section className='w-4/5 mx-auto mt-20'>
 			<h3 className='w-1/4 text-2xl font-semibold text-black/80 border-b-2 border-Primary px-2'>
 				Consults:
 			</h3>
@@ -38,6 +38,6 @@ export default function Consults({ consults }) {
 					))}
 				</Swiper>
 			</div>
-		</div>
+		</section>
 	);
 }

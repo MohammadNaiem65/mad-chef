@@ -1,5 +1,5 @@
 import { useLoaderData } from 'react-router-dom';
-import Recipe from '../Recipe/Recipe';
+import Recipe from '../../shared/Recipe/Recipe';
 
 const Recipes = () => {
 	// ! Required variables

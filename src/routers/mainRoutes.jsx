@@ -1,18 +1,18 @@
 import { createBrowserRouter } from 'react-router-dom';
 import BaseLayout from '../layout/BaseLayout/BaseLayout';
+import axiosCustomInstance from '../axios/axiosCustomInstance';
+import PrivateRoute from './PrivateRoute/PrivateRoute';
 import Home from '../pages/Home/Home';
+import Dashboard from '../pages/Dashboard/Dashboard';
 import Chef from '../pages/Dashboard/Chef/Chef';
 import Recipes from '../pages/Dashboard/Recipes/Recipes';
 import RecipeDetails from '../pages/Dashboard/RecipeDetails/RecipeDetails';
-import ErrorPage from '../pages/ErrorPage/ErrorPage';
-import Blog from '../pages/Blog/Blog';
+import UserDashboard from '../pages/UserDashboard/UserDashboard';
 import Consult from '../pages/Consult/Consult';
+import Blog from '../pages/Blog/Blog';
 import SignUp from '../pages/Authentication/SignUp/SignUp';
 import Login from '../pages/Authentication/Login/Login';
-import UserDashboard from '../pages/UserDashboard/UserDashboard';
-import Dashboard from '../pages/Dashboard/Dashboard';
-import PrivateRoute from './PrivateRoute/PrivateRoute';
-import axiosCustomInstance from '../axios/axiosCustomInstance';
+import ErrorPage from '../pages/ErrorPage/ErrorPage';
 
 export const mainRoutes = createBrowserRouter([
 	{
